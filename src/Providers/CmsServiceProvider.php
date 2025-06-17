@@ -17,8 +17,8 @@ class CmsServiceProvider extends ServiceProvider
         ], 'cms-config');
 
         $this->publishes([
-            __DIR__.'/../../resources/views' => resource_path('views/vendor/cms'),
-        ], 'cms-views');
+            __DIR__.'/../../resources/js' => resource_path('vendor/cms-core/js'),
+        ], 'cms-assets');
     }
 
 

@@ -37,7 +37,7 @@
         <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
 
         @routes
-        @vite(['vendor/cms-core/resources/js/app.ts'])
+        @vite(['resources/vendor/cms-core/js/app.ts'])
         @inertiaHead
     </head>
     <body class="font-sans antialiased">
