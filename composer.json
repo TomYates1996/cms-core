@@ -1,0 +1,28 @@
+{
+  "name": "tomyates1996/cms-base",
+  "description": "Base CMS package",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "TomYates1996",
+      "email": "tomyates19@protonmail.com"
+    }
+  ],
+    "autoload": {
+        "psr-4": {
+            "BaseCms\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "BaseCms\\Providers\\CmsServiceProvider"
+            ]
+        }
+    },
+  "require": {
+    "php": "^8.0",
+    "illuminate/support": "^10.0|^11.0|^12.0"
+  }
+}
