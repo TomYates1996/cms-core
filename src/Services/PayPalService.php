@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services;
+namespace BaseCms\Services;
 
 use PayPal\Auth\OAuthTokenCredential;
 use PayPal\Rest\ApiContext;
