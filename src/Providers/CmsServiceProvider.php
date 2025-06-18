@@ -10,7 +10,7 @@ class CmsServiceProvider extends ServiceProvider
     {
         $this->registerRoutes();
 
-        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+        $this->loadMigrationsFrom(__DIR__ . '/../../database/migrations');
 
         $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'cms');
 
@@ -19,13 +19,13 @@ class CmsServiceProvider extends ServiceProvider
         ], 'cms-assets');
 
         $this->publishes([
-            __DIR__ . '/../config' => config_path(),
+            __DIR__ . '/../../config' => config_path(),
         ], 'cms-config');
     }
 
     public function register()
     {
-        foreach (glob(__DIR__ . '/../config/*.php') as $file) {
+        foreach (glob(__DIR__ . '/../../config/*.php') as $file) {
             $key = basename($file, '.php'); 
             $this->mergeConfigFrom($file, $key);
         }
