@@ -7,7 +7,7 @@
           <input id="header-link" name="header-link" type="text" v-model="header.link" required aria-required="true" />
         </div>
         <div class="form-slide-image form-field">
-          <button type="button" @click="imageList()" class="btn-default add-img" aria-label="Select a logo image">Logo</button>
+          <button type="button" @click="imageList()" class="cms-btn-default add-img" aria-label="Select a logo image">Logo</button>
           <div v-if="showImageGrid" class="image-grid" role="grid" aria-labelledby="image-grid-label">
             <span id="image-grid-label" class="sr-only">Select an image</span>
             <img v-for="(image, index) in images" :key="image.id" class="new-slide-img-option" @click="addImageToSlide(image, index)" :src="'/' + image.image_path" :alt="'Select ' + image.name" role="gridcell" />
@@ -38,8 +38,8 @@
             </select>
         </div>
         <div class="form-actions btn-row">
-          <button type="button" @click="saveEdit()" class="btn-default" aria-label="Save header changes">Save Changes</button>
-          <button type="button" @click="cancelEdit()" class="btn-default cancel-update-slide" aria-label="Cancel editing header">Cancel</button>
+          <button type="button" @click="saveEdit()" class="cms-btn-default" aria-label="Save header changes">Save Changes</button>
+          <button type="button" @click="cancelEdit()" class="cms-btn-default cancel-update-slide" aria-label="Cancel editing header">Cancel</button>
         </div>
       </fieldset>
     </div>

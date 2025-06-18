@@ -351,9 +351,9 @@
                     placeholder="e.g. 20"
                     />
 
-                    <button class="btn-default" type="button" @click="removePrice(index)">Remove</button>
+                    <button class="cms-btn-default" type="button" @click="removePrice(index)">Remove</button>
                 </div>
-                <button class="btn-default" type="button" @click="addPrice">Add Price</button>
+                <button class="cms-btn-default" type="button" @click="addPrice">Add Price</button>
             </div>
         </div>        
         <div class="form-section section-social">
@@ -423,10 +423,10 @@
         </div>
 
 
-      <button type="submit" class="btn-default" tabindex="5" :disabled="form.processing" :aria-busy="form.processing">
+      <button type="submit" class="cms-btn-default" tabindex="5" :disabled="form.processing" :aria-busy="form.processing">
         <LoaderCircle v-if="form.processing" class="h-4 w-4 animate-spin" /> Save Item
       </button>
-      <button type="button" class="btn-default" tabindex="6" :disabled="form.processing" @click.prevent="cancelNew()" >
+      <button type="button" class="cms-btn-default" tabindex="6" :disabled="form.processing" @click.prevent="cancelNew()" >
         Cancel
       </button>
     </fieldset>

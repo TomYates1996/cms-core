@@ -36,7 +36,7 @@
                     <Newslide v-if="showModal.new" :pages="pages" :images="images" @refreshImages="getImages" @cancelNew="newSlide()"/>
                 </div>
                 <div class="page-right">
-                    <button class="btn-default new-slide-toggle" @click="newSlide()" aria-expanded="showNewSlide.toString()" aria-controls="new-slide-form" aria-label="Create a new slide">
+                    <button class="cms-btn-default new-slide-toggle" @click="newSlide()" aria-expanded="showNewSlide.toString()" aria-controls="new-slide-form" aria-label="Create a new slide">
                         {{  showModal.new ? 'Cancel' : 'New Slide' }}
                     </button>
                 </div>

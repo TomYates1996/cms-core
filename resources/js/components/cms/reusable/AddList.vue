@@ -7,7 +7,7 @@
             </button>
           </li>
         </ul>
-        <button class="btn-default" @click.prevent="showNew = !showNew" >New {{ type }} item</button>
+        <button class="cms-btn-default" @click.prevent="showNew = !showNew" >New {{ type }} item</button>
         <NewItem v-if="showNew" :type="type" @created="emitCreated"/>
     </div>
 </template>

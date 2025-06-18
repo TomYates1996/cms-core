@@ -40,7 +40,7 @@
             <div class="form-actions">
                 <button
                     type="submit"
-                    class="btn-default"
+                    class="cms-btn-default"
                     :disabled="form.processing"
                     tabindex="5"
                     aria-label="Create Image"
@@ -50,7 +50,7 @@
                 </button>
                 <button
                     type="button"
-                    class="btn-default cancel-new-image"
+                    class="cms-btn-default cancel-new-image"
                     @click="closeNewImage()"
                     aria-label="Cancel Image Upload"
                 >

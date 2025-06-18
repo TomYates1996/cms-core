@@ -1,8 +1,8 @@
 <template>
     <div class="section-new-footer">
       <div class="tab-links tab-list btn-row">
-        <button :class="newTab ? 'active btn-alt no-hover' : 'inactive btn-default'" @click.prevent="newTab = true">Add New</button>
-        <button :class="newTab ? 'inactive btn-default' : 'active btn-alt no-hover'" @click.prevent="newTab = false">Saved Options</button>
+        <button :class="newTab ? 'active cms-btn-alt no-hover' : 'inactive cms-btn-default'" @click.prevent="newTab = true">Add New</button>
+        <button :class="newTab ? 'inactive cms-btn-default' : 'active cms-btn-alt no-hover'" @click.prevent="newTab = false">Saved Options</button>
       </div>
   
       <!-- Saved Footers -->
@@ -25,7 +25,7 @@
   
           <!-- Image Picker -->
           <div class="form-slide-image form-field">
-            <button type="button" @click="imageList()" class="btn-default add-img" aria-label="Select a logo image">Logo</button>
+            <button type="button" @click="imageList()" class="cms-btn-default add-img" aria-label="Select a logo image">Logo</button>
             <div v-if="showImageGrid" class="image-grid" role="grid" aria-labelledby="footer-image-grid-label">
               <span id="footer-image-grid-label" class="sr-only">Select an image</span>
               <img
@@ -58,18 +58,18 @@
             </li>
           </ul>
 
-          <button class="btn-default" @click.prevent="showAdd = !showAdd">Add Social Media</button>
+          <button class="cms-btn-default" @click.prevent="showAdd = !showAdd">Add Social Media</button>
           <AddList v-if="showAdd" :items="socialMedia" :type="'social'" @created="$emit('created', $event)" @selected="addSocial"/>
 
           <!-- Footer Widget -->
           <div class="footer-cta">
-            <button class="btn-default" @click.prevent="addCTA()">Add CTA</button>
+            <button class="cms-btn-default" @click.prevent="addCTA()">Add CTA</button>
           </div>
   
           <!-- Actions -->
           <div class="form-actions btn-row">
-            <button type="submit" class="btn-default" aria-label="Add Footer">Add Footer</button>
-            <button type="button" @click="cancelAdd()" class="btn-default cancel-update-slide" aria-label="Cancel Adding Footer">Cancel</button>
+            <button type="submit" class="cms-btn-default" aria-label="Add Footer">Add Footer</button>
+            <button type="button" @click="cancelAdd()" class="cms-btn-default cancel-update-slide" aria-label="Cancel Adding Footer">Cancel</button>
           </div>
         </fieldset>
       </form>

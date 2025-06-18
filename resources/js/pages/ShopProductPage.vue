@@ -176,13 +176,13 @@ export default {
                 font-weight: 600;
                 font-size: 14px;
                 &&.red {
-                    color: var(--deep-red);
+                    color: var(--out-stock);
                 }
                 &&.green {
-                    color: var(--sea-green);
+                    color: var(--in-stock);
                 }
                 &&.yellow {
-                    color: var(--yellow);
+                    color: var(--low-stock);
                 }
             }
         }

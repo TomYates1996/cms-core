@@ -22,7 +22,7 @@
 
         <div class="form-slide-image form-field">
         <img class="current-image" :src="slideImage" alt="Current slide image" />
-        <button type="button" class="btn-default add-img" @click.prevent="imageList()" aria-expanded="showImageGrid.toString()" aria-controls="imageGrid">
+        <button type="button" class="cms-btn-default add-img" @click.prevent="imageList()" aria-expanded="showImageGrid.toString()" aria-controls="imageGrid">
             Select Image
         </button>
         </div>
@@ -41,12 +41,12 @@
         <NewImage @refreshImages="getImages()" />
         </div>
 
-        <button type="submit" class="btn-default mt-2 w-full" tabindex="5" :disabled="form.processing" :aria-busy="form.processing">
+        <button type="submit" class="cms-btn-default mt-2 w-full" tabindex="5" :disabled="form.processing" :aria-busy="form.processing">
         <LoaderCircle v-if="form.processing" class="h-4 w-4 animate-spin" />
         Save Changes
         </button>
 
-        <Link v-if="$page.props.auth.user" href="/cms/slides" method="get" class="btn-default" aria-label="Cancel and return to slide list">
+        <Link v-if="$page.props.auth.user" href="/cms/slides" method="get" class="cms-btn-default" aria-label="Cancel and return to slide list">
         Cancel Edit
         </Link>
     </fieldset>

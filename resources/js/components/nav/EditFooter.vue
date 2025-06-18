@@ -24,7 +24,7 @@
             </li>
           </ul>
 
-          <button class="btn-default" @click.prevent="showAdd = !showAdd">Add Social Media</button>
+          <button class="cms-btn-default" @click.prevent="showAdd = !showAdd">Add Social Media</button>
           <AddList v-if="showAdd" :items="socialMedia" :type="'social'" @created="$emit('created', $event)" @selected="addSocial"/>
 
         <!-- Footer Widget -->
@@ -32,7 +32,7 @@
             <ul class="current-ctas">
                 <li v-for="cta in footer.widgets" :key="cta.id">
                     <p>{{ cta.title }}</p>
-                    <button class="btn-default" @click.prevent="toggleShowEditCTA(cta)">{{ showEditCTA ? 'Cancel CTA' : 'Edit CTA' }}</button>
+                    <button class="cms-btn-default" @click.prevent="toggleShowEditCTA(cta)">{{ showEditCTA ? 'Cancel CTA' : 'Edit CTA' }}</button>
                 </li>
             </ul>
             <form v-if="showEditCTA" @submit.prevent="saveEditCTA()" class="edit-page-info form tab-inners" aria-labelledby="form-header">
@@ -44,11 +44,11 @@
                     <label for="description">Description: 
                         <input type="text" id="description" v-model="editCTA.description">
                     </label>
-                    <button type="submit" class="btn-default" aria-label="Add CTA">Save Changes</button>
-                    <button type="button" @click="cancelAdd()" class="btn-default cancel-update-slide" aria-label="Cancel Editing CTA">Cancel</button>
+                    <button type="submit" class="cms-btn-default" aria-label="Add CTA">Save Changes</button>
+                    <button type="button" @click="cancelAdd()" class="cms-btn-default cancel-update-slide" aria-label="Cancel Editing CTA">Cancel</button>
                 </fieldset>
             </form>
-            <button class="btn-default" @click.prevent="showAddCTA = !showAddCTA">{{ showAddCTA ? 'Cancel CTA' : 'Add CTA' }}</button>
+            <button class="cms-btn-default" @click.prevent="showAddCTA = !showAddCTA">{{ showAddCTA ? 'Cancel CTA' : 'Add CTA' }}</button>
             <form v-if="showAddCTA" @submit.prevent="addCTA()" class="edit-page-info form tab-inners" aria-labelledby="form-header">
                 <fieldset class="form-inner">
                     <legend id="form-header" class="form-title">Add a New CTA</legend>
@@ -58,8 +58,8 @@
                     <label for="description">Description: 
                         <input type="text" id="description" v-model="newCTA.description">
                     </label>
-                    <button type="submit" class="btn-default" aria-label="Add CTA">Save CTA</button>
-                    <button type="button" @click="cancelAdd()" class="btn-default cancel-update-slide" aria-label="Cancel Adding CTA">Cancel</button>
+                    <button type="submit" class="cms-btn-default" aria-label="Add CTA">Save CTA</button>
+                    <button type="button" @click="cancelAdd()" class="cms-btn-default cancel-update-slide" aria-label="Cancel Adding CTA">Cancel</button>
                 </fieldset>
             </form>
         </div>

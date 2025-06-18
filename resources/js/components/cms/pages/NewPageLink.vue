@@ -9,7 +9,7 @@
                 {{ page.title }}
             </option>
         </select>
-        <button type="submit" class="btn-default" tabindex="5" :disabled="form.processing" :aria-busy="form.processing">
+        <button type="submit" class="cms-btn-default" tabindex="5" :disabled="form.processing" :aria-busy="form.processing">
             <LoaderCircle v-if="form.processing" class="h-4 w-4 animate-spin" /> Save Page
         </button>
     </form>

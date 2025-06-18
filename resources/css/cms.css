@@ -17,7 +17,7 @@
 /* CRM STYLING */
 .crm-header {
     text-transform: capitalize;
-    border-bottom: 1px solid var(--black);
+    border-bottom: 1px solid var(--cms-black);
 }
 
 /* CMS STYLES */
@@ -30,4 +30,33 @@
 }
 .cms h2 {
     font-size: 1.75rem;
+}
+
+.cms-btn-default,
+.cms-btn-alt {
+    border: 2px solid var(--cms-black);
+    padding: 4px 8px;
+    border-radius: 6px;
+    background-color: var(--cms-white);
+    color: var(--cms-black);
+    transition: 0.2s ease;
+    text-align: center;
+}
+.cms-btn-alt {
+    border-color: var(--cms-tertiary);
+    color: var(--cms-white);
+    background-color: var(--cms-tertiary);
+}
+
+@media (hover:hover) {
+    .cms-btn-default:hover {
+        background-color: var(--cms-tertiary);
+        border-color: var(--cms-tertiary);
+        color: var(--cms-white);
+    }
+    .cms-btn-alt:not(.no-hover):hover {
+        border-color: var(--cms-black);
+        background-color: var(--cms-white);
+        color: var(--cms-black);
+    }
 }

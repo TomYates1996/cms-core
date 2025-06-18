@@ -29,15 +29,15 @@
   
         <div class="form-show-nav form-field">
           <label id="show-in-nav-label">Show in Navigation:</label>
-          <button class="show-in-nav btn-default" @click.prevent="toggleShow" type="button" :aria-pressed="form.show_in_nav" aria-labelledby="show-in-nav-label">
+          <button class="show-in-nav cms-btn-default" @click.prevent="toggleShow" type="button" :aria-pressed="form.show_in_nav" aria-labelledby="show-in-nav-label">
             {{ form.show_in_nav ? 'No' : 'Yes' }}
           </button>
         </div>
   
-        <button type="submit" class="btn-default" tabindex="5" :disabled="form.processing" :aria-busy="form.processing">
+        <button type="submit" class="cms-btn-default" tabindex="5" :disabled="form.processing" :aria-busy="form.processing">
           <LoaderCircle v-if="form.processing" class="h-4 w-4 animate-spin" /> Save Changes
         </button>
-        <button type="button" class="btn-default" tabindex="6" :disabled="form.processing" @click.prevent="cancelNew()" >
+        <button type="button" class="cms-btn-default" tabindex="6" :disabled="form.processing" @click.prevent="cancelNew()" >
             Cancel
         </button>
       </fieldset>

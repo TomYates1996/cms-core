@@ -1,8 +1,8 @@
 <template>
     <div class="section-new-header">
         <div class="tab-links tab-list btn-row">
-          <button :class="newTab ? 'active btn-alt no-hover' : 'inactive btn-default'" @click.prevent="newTab = true">Add New</button>
-          <button :class="newTab ? 'inactive btn-default' : 'active btn-alt no-hover'" @click.prevent="newTab = false">Saved Options</button>
+          <button :class="newTab ? 'active cms-btn-alt no-hover' : 'inactive cms-btn-default'" @click.prevent="newTab = true">Add New</button>
+          <button :class="newTab ? 'inactive cms-btn-default' : 'active cms-btn-alt no-hover'" @click.prevent="newTab = false">Saved Options</button>
         </div>
         <ul class="saved-item-list tab-inners" v-if="!newTab">
             <li v-for="(item, index) in savedHeaders" :key="index" class="saved-item">
@@ -35,7 +35,7 @@
                     </div>
     
                 <div class="form-slide-image form-field">
-                <button type="button" @click="imageList()" class="btn-default add-img" aria-label="Select a logo image">Logo</button>
+                <button type="button" @click="imageList()" class="cms-btn-default add-img" aria-label="Select a logo image">Logo</button>
                 <div v-if="showImageGrid" class="image-grid" role="grid" aria-labelledby="image-grid-label">
                     <span id="image-grid-label" class="sr-only">Select an image</span>
                     <img class="new-slide-img-option" @click="addImageToSlide(image, index)" v-for="(image, index) in images" :key="image.id" :src="'/' + image.image_path" :alt="'Select ' + image.name" role="gridcell" />
@@ -68,8 +68,8 @@
                 </div>
     
                 <div class="form-actions btn-row">
-                <button type="submit" class="btn-default" aria-label="Add Header">Add Header</button>
-                <button type="button" @click="cancelAdd()" class="btn-default cancel-update-slide" aria-label="Cancel Adding Header">Cancel</button>
+                <button type="submit" class="cms-btn-default" aria-label="Add Header">Add Header</button>
+                <button type="button" @click="cancelAdd()" class="cms-btn-default cancel-update-slide" aria-label="Cancel Adding Header">Cancel</button>
                 </div>
             </fieldset>
         </form>

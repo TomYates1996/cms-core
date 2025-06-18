@@ -62,7 +62,7 @@
         </div>
 
         <div class="form-slide-image form-field">
-        <button type="button" class="btn-default add-img" @click.prevent="imageList()" 
+        <button type="button" class="cms-btn-default add-img" @click.prevent="imageList()" 
                 aria-expanded="showImageGrid.toString()" aria-controls="imageGrid">
             Select Image
         </button>
@@ -80,13 +80,13 @@
         <NewImage @refreshImages="refreshImages()" />
         </div>
 
-        <button type="submit" class="btn-default" tabindex="5"
+        <button type="submit" class="cms-btn-default" tabindex="5"
                 :disabled="form.processing" :aria-busy="form.processing">
         <LoaderCircle v-if="form.processing" class="h-4 w-4 animate-spin" />
         Update Slide
         </button>
 
-        <button type="button" class="btn-default cancel-update-slide"
+        <button type="button" class="cms-btn-default cancel-update-slide"
                 @click.prevent="closeUpdateSlide()" aria-label="Cancel slide update">
         Cancel
         </button>

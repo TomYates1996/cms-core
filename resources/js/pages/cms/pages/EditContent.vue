@@ -2,13 +2,13 @@
   <div class="page-wrapper">
     <div class="page-left detail">
       <div class="main-buttons">
-        <button v-if="!isBlog" @click="layout ? saveLayout() : savePage()" class="btn-default">Save {{ layout ? 'layout' : 'page' }}</button>
-        <button v-if="isBlog" @click="saveBlog()" class="btn-default">Save blog post</button>
+        <button v-if="!isBlog" @click="layout ? saveLayout() : savePage()" class="cms-btn-default">Save {{ layout ? 'layout' : 'page' }}</button>
+        <button v-if="isBlog" @click="saveBlog()" class="cms-btn-default">Save blog post</button>
         <Link 
              v-if="$page.props.auth.user && !isBlog"
              :href="layout ? '/cms/layouts' : '/cms/pages/' + page.section"
              method="get"
-             class="btn-default"
+             class="cms-btn-default"
           >
               Cancel Changes
           </Link>
@@ -16,7 +16,7 @@
              v-if="$page.props.auth.user && isBlog"
              :href="'/cms/blog'"
              method="get"
-             class="btn-default"
+             class="cms-btn-default"
           >
               Cancel Changes
           </Link>
@@ -32,7 +32,7 @@
             <button @click="showSavedNav(savedHeaders , 'headers')" class="download-btn"><font-awesome-icon :icon="['fas', 'download']"/></button>
             <button @click="saveHeader(localContent.header, 'header')" class="save-btn"><font-awesome-icon :icon="localContent.header.is_saved ? ['fas', 'lock'] : ['fas', 'unlock']" /></button>
         </div>
-        <!-- <button @click="openAddItem('headers')" class="btn-default" v-if="localContent.headers && localContent.headers.length < 1">Add Header</button> -->
+        <!-- <button @click="openAddItem('headers')" class="cms-btn-default" v-if="localContent.headers && localContent.headers.length < 1">Add Header</button> -->
       </div>
       <!-- Widgets Sidebar -->
       <div class="sidebar-option sidebar-widgets">
@@ -50,7 +50,7 @@
               <button @click="cloneWidget(widget, 'widgets', index)" class="save-btn"><font-awesome-icon :icon="['fas', 'clone']" /></button>
           </div>
         </div>
-        <button @click="openAddItem('widgets')" class="btn-default">Add Widget</button>
+        <button @click="openAddItem('widgets')" class="cms-btn-default">Add Widget</button>
       </div>
         <!-- Footer Sidebar -->
         <div class="sidebar-option sidebar-footer" v-if="!isBlog">
@@ -62,7 +62,7 @@
             <button @click="showSavedNav(savedFooters , 'footers')" class="download-btn"><font-awesome-icon :icon="['fas', 'download']"/></button>
             <button @click="saveHeader(localContent.footer, 'footer')" class="save-btn"><font-awesome-icon :icon="localContent.footer.is_saved ? ['fas', 'lock'] : ['fas', 'unlock']" /></button>
         </div>
-        <!-- <button @click="openAddItem('footer')" class="btn-default" v-if="localContent.footer">Add Footer</button> -->
+        <!-- <button @click="openAddItem('footer')" class="cms-btn-default" v-if="localContent.footer">Add Footer</button> -->
       </div>
             <!-- <EditSlide v-if="showEditSlide" :slide="slideToEdit"/> -->
           </div>
@@ -625,21 +625,21 @@ export default {
         .page-left {
             display: flex;
             flex-direction: column;
-            border-right: 2px solid var(--black);
+            border-right: 2px solid var(--cms-black);
             width: 25%;
             gap: 10px;
-            background-color: var(--pale-green);
+            background-color: var(--cms-primary);
             .main-buttons {
               padding-top: 20px;
               display: flex;
               justify-content: center;
               gap: 10px;
-              border-bottom: 2px solid var(--white);
+              border-bottom: 2px solid var(--cms-white);
               padding-bottom: 20px;
-              background-color: var(--dull-green);
+              background-color: var(--cms-secondary);
               @media (hover:hover) {
-                .btn-default:hover {
-                  border-color: var(--white)
+                .cms-btn-default:hover {
+                  border-color: var(--cms-white)
                 }
               }
             }
@@ -679,7 +679,7 @@ export default {
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: var(--white);
+      background-color: var(--cms-white);
     }
     .sidebar-option {
       display: flex;
@@ -689,7 +689,7 @@ export default {
       align-items: flex-start;
       padding: 20px;
       h5 {
-        border-bottom: 1px solid var(--black);
+        border-bottom: 1px solid var(--cms-black);
         width: 100%;
       }
       .widget-options {
@@ -703,7 +703,7 @@ export default {
         border: 2px solid var(--white);
         border-radius: 6px;
         padding: 4px 8px;
-        background-color: var(--sea-green);
+        background-color: var(--cms-tertiary);
         color: var(--white);
         display: flex;
         align-items: center;

@@ -2,8 +2,8 @@
  <div class="modal-content">
   <div class="tab-inners">
     <div v-if="showSlideList" class="slides-buttons" role="tablist" aria-label="Tabs for toggling between saved and new widgets">
-      <button class="btn-default" @click.prevent="addSlides()" role="button">Confirm add</button>
-      <button class="btn-default" @click.prevent="cancelSlides()" role="button">Cancel</button>
+      <button class="cms-btn-default" @click.prevent="addSlides()" role="button">Confirm add</button>
+      <button class="cms-btn-default" @click.prevent="cancelSlides()" role="button">Cancel</button>
     </div>
     <form v-if="!showSlideList" class="form form-new-widget" aria-labelledby="select-widget-title">
       <fieldset class="form-inner">
@@ -97,7 +97,7 @@
         <QuillEditor v-if="widget.type && widget.type.name === 'text'" v-model="widget.content" />
   
         <div class="form-field" v-if="widget.type && widgetOptions.find(option => option.variant === widget.type.variant)?.hasSettings">
-          <button @click.prevent="showSlideListF()" class="btn-default" aria-label="Open slide selector">Select Slides</button>
+          <button @click.prevent="showSlideListF()" class="cms-btn-default" aria-label="Open slide selector">Select Slides</button>
         </div>
 
   <!-- Category Selector for Grid Variants -->
@@ -131,8 +131,8 @@
         </div>
   
         <div class="form-actions">
-          <button type="button" @click="saveEdit()" class="btn-default" aria-label="Add Widget">Save Widget</button>
-          <button type="button" @click="cancelEdit()" class="btn-default cancel-update-slide" aria-label="Cancel Adding Widget">Cancel</button>
+          <button type="button" @click="saveEdit()" class="cms-btn-default" aria-label="Add Widget">Save Widget</button>
+          <button type="button" @click="cancelEdit()" class="cms-btn-default cancel-update-slide" aria-label="Cancel Adding Widget">Cancel</button>
         </div>
       </fieldset>
     </form>

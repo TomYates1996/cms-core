@@ -66,7 +66,7 @@
       <div class="form-actions">
         <button
           type="submit"
-          class="btn-default"
+          class="cms-btn-default"
           :disabled="form.processing"
           aria-label="Update Image"
         >
@@ -76,7 +76,7 @@
 
         <button
           type="button"
-          class="btn-default cancel-new-image"
+          class="cms-btn-default cancel-new-image"
           @click.prevent="closeEditImage"
           aria-label="Cancel Edit Image"
         >
@@ -217,7 +217,7 @@ input {
 .upload-label {
   display: inline-block;
   padding: 0.5rem 1rem;
-  background-color: var(--sea-green);
+  background-color: var(--cms-tertiary);
   color: white;
   border-radius: 4px;
   cursor: pointer;
@@ -225,7 +225,7 @@ input {
 }
 
 .upload-label:focus {
-  outline: 2px solid var(--black);
+  outline: 2px solid var(--cms-black);
 }
 
 .file-name {

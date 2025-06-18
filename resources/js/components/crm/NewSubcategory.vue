@@ -8,10 +8,10 @@
         <input id="title" name="title" type="text" required v-model="form.name" autofocus aria-required="true" @input="updateSlug"/>
       </div>
 
-      <button type="submit" class="btn-default" tabindex="5" :disabled="form.processing" :aria-busy="form.processing">
+      <button type="submit" class="cms-btn-default" tabindex="5" :disabled="form.processing" :aria-busy="form.processing">
         <LoaderCircle v-if="form.processing" class="h-4 w-4 animate-spin" /> Save Category
       </button>
-      <button type="button" class="btn-default" tabindex="6" :disabled="form.processing" @click.prevent="cancelNew()" >
+      <button type="button" class="cms-btn-default" tabindex="6" :disabled="form.processing" @click.prevent="cancelNew()" >
         Cancel
       </button>
     </fieldset>

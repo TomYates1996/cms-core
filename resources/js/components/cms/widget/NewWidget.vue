@@ -1,13 +1,13 @@
 <template>
 <div class="modal-content">
   <div v-if="!showSlideList" class="tab-list" role="tablist" aria-label="Tabs for toggling between saved and new widgets">
-    <button :class="newTab ? 'active btn-alt no-hover' : 'inactive btn-default'" @click.prevent="newTab = true" role="tab" :aria-selected="newTab ? 'true' : 'false'" aria-controls="new-tab-content" id="add-new-tab">Add New</button>
-    <button :class="newTab ? 'inactive btn-default' : 'active btn-alt no-hover'" @click.prevent="newTab = false" role="tab" :aria-selected="newTab ? 'false' : 'true'" aria-controls="saved-tab-content" id="saved-options-tab">Saved Options</button>
+    <button :class="newTab ? 'active cms-btn-alt no-hover' : 'inactive cms-btn-default'" @click.prevent="newTab = true" role="tab" :aria-selected="newTab ? 'true' : 'false'" aria-controls="new-tab-content" id="add-new-tab">Add New</button>
+    <button :class="newTab ? 'inactive cms-btn-default' : 'active cms-btn-alt no-hover'" @click.prevent="newTab = false" role="tab" :aria-selected="newTab ? 'false' : 'true'" aria-controls="saved-tab-content" id="saved-options-tab">Saved Options</button>
   </div>
   <div v-if="newTab" class="tab-inners">
     <div v-if="showSlideList" class="slides-buttons" role="tablist" aria-label="Tabs for toggling between saved and new widgets">
-      <button class="btn-default" @click.prevent="addSlides()" role="button">Confirm add</button>
-      <button class="btn-default" @click.prevent="cancelSlides()" role="button">Cancel</button>
+      <button class="cms-btn-default" @click.prevent="addSlides()" role="button">Confirm add</button>
+      <button class="cms-btn-default" @click.prevent="cancelSlides()" role="button">Cancel</button>
     </div>
     <form v-if="!showSlideList" class="form form-new-widget" aria-labelledby="select-widget-title">
       <fieldset class="form-inner">
@@ -94,7 +94,7 @@
         </section>
   
         <div class="form-field" v-if="newWidget.feed_type === 'slides' && newWidget.type && widgetOptions.find(option => option.variant === newWidget.type.variant)?.hasSettings">
-          <button @click.prevent="showSlideListF()" class="btn-default" aria-label="Open slide selector">Select Slides</button>
+          <button @click.prevent="showSlideListF()" class="cms-btn-default" aria-label="Open slide selector">Select Slides</button>
         </div>
 
         <!-- Category Selector for Grid Variants -->
@@ -130,8 +130,8 @@
         <QuillEditor v-if="newWidget.type && newWidget.type.name === 'text'" v-model="newWidget.content" />
   
         <div class="form-actions">
-          <button type="button" @click="addWidget()" class="btn-default" aria-label="Add Widget">Add Widget</button>
-          <button type="button" @click="cancelAdd()" class="btn-default cancel-update-slide" aria-label="Cancel Adding Widget">Cancel</button>
+          <button type="button" @click="addWidget()" class="cms-btn-default" aria-label="Add Widget">Add Widget</button>
+          <button type="button" @click="cancelAdd()" class="cms-btn-default cancel-update-slide" aria-label="Cancel Adding Widget">Cancel</button>
         </div>
       </fieldset>
     </form>
@@ -151,7 +151,7 @@
             </article>
           </li>
           </ul>
-          <!-- <button class="btn-default" @click.prevent="showModal.newSlide = true">New Slide</button> -->
+          <!-- <button class="cms-btn-default" @click.prevent="showModal.newSlide = true">New Slide</button> -->
         </div>
       </div>
       <div v-if="!newTab" class="tab-inners">

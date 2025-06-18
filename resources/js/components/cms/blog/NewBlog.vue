@@ -9,7 +9,7 @@
       </div>
 
         <div class="form-slide-image form-field">
-            <button type="button" class="btn-default add-img" @click="imageList()"
+            <button type="button" class="cms-btn-default add-img" @click="imageList()"
                 aria-controls="image-grid" aria-expanded="showImageGrid.toString()">
                 Select Image
             </button>
@@ -94,10 +94,10 @@
 
             <!-- 'category_id' => 'nullable|exists:categories,id', -->
 
-      <button type="submit" class="btn-default" tabindex="5" :disabled="form.processing" :aria-busy="form.processing">
+      <button type="submit" class="cms-btn-default" tabindex="5" :disabled="form.processing" :aria-busy="form.processing">
         <LoaderCircle v-if="form.processing" class="h-4 w-4 animate-spin" /> Save Blog
       </button>
-      <button type="button" class="btn-default" tabindex="6" :disabled="form.processing" @click.prevent="cancelNew()" >
+      <button type="button" class="cms-btn-default" tabindex="6" :disabled="form.processing" @click.prevent="cancelNew()" >
         Cancel
       </button>
     </fieldset>

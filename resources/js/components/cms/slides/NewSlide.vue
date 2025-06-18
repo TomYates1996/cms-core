@@ -45,7 +45,7 @@
         </div>
 
         <div class="form-slide-image form-field">
-        <button type="button" class="btn-default add-img" @click="imageList()"
+        <button type="button" class="cms-btn-default add-img" @click="imageList()"
                 aria-controls="image-grid" aria-expanded="showImageGrid.toString()">
             Select Image
         </button>
@@ -63,13 +63,13 @@
         <img :src="imagePreview" alt="Preview of selected slide image" />
         </div>
 
-        <button type="submit" class="btn-default" tabindex="5"
+        <button type="submit" class="cms-btn-default" tabindex="5"
                 :disabled="form.processing" :aria-busy="form.processing.toString()">
         <LoaderCircle v-if="form.processing" class="h-4 w-4 animate-spin" />
         Create Slide
         </button>
 
-        <button type="button" class="btn-default cancel-new-slide"
+        <button type="button" class="cms-btn-default cancel-new-slide"
                 @click="cancelNew()" aria-label="Cancel slide creation">
         Cancel
         </button>

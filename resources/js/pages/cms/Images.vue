@@ -100,7 +100,7 @@ export default {
         }
         @media (hover:hover) {
             .edit-image:hover {
-                background-color: var(--sea-green);
+                background-color: var(--cms-tertiary);
                 color: var(--white);
                 border-color: var(--white);
             }
