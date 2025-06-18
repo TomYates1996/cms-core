@@ -7,7 +7,7 @@ use BaseCms\Models\OrderItem;
 use BaseCms\Models\Page;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
-use App\Mail\OrderConfirmationMail;
+use BaseCms\Mail\OrderConfirmationMail;
 use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
