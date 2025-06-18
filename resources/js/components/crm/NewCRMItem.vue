@@ -435,6 +435,8 @@
 import { useForm } from '@inertiajs/vue3';
 import { LoaderCircle, LogIn } from 'lucide-vue-next';
 import axios from 'axios';
+import imageCompression from 'browser-image-compression';
+
 
 export default {
   setup(){
@@ -613,69 +615,99 @@ export default {
   components: {
       LoaderCircle,
   },
-methods: {
-    getCategories() {
-        axios.get('/api/categories/index') 
-        .then(res => {
-            this.categories = res.data;
-        })
-        .catch(err => {
-            console.error("Failed to load categories", err);
-        });
-    },
-    onMediaGalleryChange(event) {
-        const files = Array.from(event.target.files);
-        this.form.media_gallery.push(...files);
-        event.target.value = null;
-    },
-    removeMedia(index) {
-        this.form.media_gallery.splice(index, 1);
-    },
-    addPrice() {
-        this.form.prices.push({ label: '', price: null });
-    },
-    removePrice(index) {
-        this.form.prices.splice(index, 1);
-    },
-    onThumbnailChange(event) {
-        const file = event.target.files[0];
-        this.form.thumbnail_image = file || null;
-        event.target.value = null;
-    },
-generateOpenings() {
-    const openings = [];
-    const startDate = new Date(this.form.start_datetime);
-    let endDate = new Date(this.form.end_datetime);
-    if (!this.form.end_datetime || isNaN(endDate.getTime())) {
-        endDate = new Date('2099-12-31');
-    } 
-    const recurrence = this.form.recurrence || 'none';
-    const oneDay = this.oneDay;
+    methods: {
+        getCategories() {
+            axios.get('/api/categories/index') 
+            .then(res => {
+                this.categories = res.data;
+            })
+            .catch(err => {
+                console.error("Failed to load categories", err);
+            });
+        },
+        async onMediaGalleryChange(event) {
+            const files = Array.from(event.target.files);
 
-    const dayNames = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
-    const monthNames = [
-        'January', 'February', 'March', 'April', 'May', 'June',
-        'July', 'August', 'September', 'October', 'November', 'December'
-    ];
+            const options = {
+                maxSizeMB: 1,
+                maxWidthOrHeight: 1200,
+                useWebWorker: true,
+            };
 
-    if (oneDay) {
-        const dayName = dayNames[startDate.getDay()];
-        const month = startDate.getMonth() + 1;
-        const date = startDate.getDate();
+            const compressedFiles = await Promise.all(
+                files.map(async (file) => {
+                    try {
+                        return await imageCompression(file, options);
+                    } catch (error) {
+                        console.error('Compression error:', error);
+                        return file; // fallback
+                    }
+                })
+            );
 
-        if (recurrence === 'yearly') {
-            const startYear = startDate.getFullYear();
-            const endYear = endDate.getFullYear();
+            this.form.media_gallery.push(...compressedFiles);
+            event.target.value = null;
+        },
 
-            for (let year = startYear; year <= endYear; year++) {
-                const dateObj = new Date(year, month, date);
-                if (dateObj > endDate) break;
+        removeMedia(index) {
+            this.form.media_gallery.splice(index, 1);
+        },
+        addPrice() {
+            this.form.prices.push({ label: '', price: null });
+        },
+        removePrice(index) {
+            this.form.prices.splice(index, 1);
+        },
+        onThumbnailChange(event) {
+            const file = event.target.files[0];
+            this.form.thumbnail_image = file || null;
+            event.target.value = null;
+        },
+    generateOpenings() {
+        const openings = [];
+        const startDate = new Date(this.form.start_datetime);
+        let endDate = new Date(this.form.end_datetime);
+        if (!this.form.end_datetime || isNaN(endDate.getTime())) {
+            endDate = new Date('2099-12-31');
+        } 
+        const recurrence = this.form.recurrence || 'none';
+        const oneDay = this.oneDay;
 
-                const freshDay = dayNames[dateObj.getDay()];
+        const dayNames = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+        const monthNames = [
+            'January', 'February', 'March', 'April', 'May', 'June',
+            'July', 'August', 'September', 'October', 'November', 'December'
+        ];
 
+        if (oneDay) {
+            const dayName = dayNames[startDate.getDay()];
+            const month = startDate.getMonth() + 1;
+            const date = startDate.getDate();
+
+            if (recurrence === 'yearly') {
+                const startYear = startDate.getFullYear();
+                const endYear = endDate.getFullYear();
+
+                for (let year = startYear; year <= endYear; year++) {
+                    const dateObj = new Date(year, month, date);
+                    if (dateObj > endDate) break;
+
+                    const freshDay = dayNames[dateObj.getDay()];
+
+                    openings.push({
+                        date: dateObj.toISOString().slice(0, 10),
+                        day: freshDay,
+                        month: monthNames[month],
+                        all_day: this.calculatedDaysList[0].all_day,
+                        times: this.calculatedDaysList[0].all_day
+                            ? []
+                            : this.calculatedDaysList[0].times.map(t => ({ ...t }))
+                    });
+                }
+            } else {
                 openings.push({
-                    date: dateObj.toISOString().slice(0, 10),
-                    day: freshDay,
+                    date: startDate.toISOString().slice(0, 10),
+                    day: dayName,
                     month: monthNames[month],
                     all_day: this.calculatedDaysList[0].all_day,
                     times: this.calculatedDaysList[0].all_day
@@ -683,87 +715,76 @@ generateOpenings() {
                         : this.calculatedDaysList[0].times.map(t => ({ ...t }))
                 });
             }
-        } else {
-            openings.push({
-                date: startDate.toISOString().slice(0, 10),
-                day: dayName,
-                month: monthNames[month],
-                all_day: this.calculatedDaysList[0].all_day,
-                times: this.calculatedDaysList[0].all_day
-                    ? []
-                    : this.calculatedDaysList[0].times.map(t => ({ ...t }))
-            });
-        }
 
-        this.form.openings = openings;
-        return;
-    }
-
-        const selectedDays = this.daysList.filter(day => day.selected);
-
-        if (!selectedDays.length) {
-            this.form.openings = [];
+            this.form.openings = openings;
             return;
         }
 
-        const getMatchedDay = (date) => {
-            const name = dayNames[date.getDay()];
-            return selectedDays.find(d => d.name === name);
-        };
+            const selectedDays = this.daysList.filter(day => day.selected);
 
-        const addOpening = (date, matchedDay) => {
-            openings.push({
-                date: date.toISOString().slice(0, 10),
-                day: dayNames[date.getDay()],
-                month: monthNames[date.getMonth()],
-                all_day: matchedDay.all_day,
-                times: matchedDay.all_day ? [] : matchedDay.times.map(t => ({ ...t })),
-            });
-        };
-
-        let currentDate = new Date(startDate);
-
-        if (recurrence === 'none') {
-            // Go day-by-day and add if it matches a selected day
-            while (currentDate <= endDate) {
-                const matchedDay = getMatchedDay(currentDate);
-                if (matchedDay) {
-                    addOpening(new Date(currentDate), matchedDay);
-                }
-                currentDate.setDate(currentDate.getDate() + 1);
+            if (!selectedDays.length) {
+                this.form.openings = [];
+                return;
             }
 
-        } else if (recurrence === 'weekly') {
-            // For each week, loop through 7 days and check matches
-            while (currentDate <= endDate) {
-                for (let i = 0; i < 7; i++) {
-                    if (currentDate > endDate) break;
+            const getMatchedDay = (date) => {
+                const name = dayNames[date.getDay()];
+                return selectedDays.find(d => d.name === name);
+            };
+
+            const addOpening = (date, matchedDay) => {
+                openings.push({
+                    date: date.toISOString().slice(0, 10),
+                    day: dayNames[date.getDay()],
+                    month: monthNames[date.getMonth()],
+                    all_day: matchedDay.all_day,
+                    times: matchedDay.all_day ? [] : matchedDay.times.map(t => ({ ...t })),
+                });
+            };
+
+            let currentDate = new Date(startDate);
+
+            if (recurrence === 'none') {
+                // Go day-by-day and add if it matches a selected day
+                while (currentDate <= endDate) {
                     const matchedDay = getMatchedDay(currentDate);
                     if (matchedDay) {
                         addOpening(new Date(currentDate), matchedDay);
                     }
                     currentDate.setDate(currentDate.getDate() + 1);
                 }
-            }
 
-        } else if (recurrence === '2weeks') {
-            // Similar to weekly, but skip every other week
-            while (currentDate <= endDate) {
-                for (let i = 0; i < 7; i++) {
-                    if (currentDate > endDate) break;
-                    const matchedDay = getMatchedDay(currentDate);
-                    if (matchedDay) {
-                        addOpening(new Date(currentDate), matchedDay);
+            } else if (recurrence === 'weekly') {
+                // For each week, loop through 7 days and check matches
+                while (currentDate <= endDate) {
+                    for (let i = 0; i < 7; i++) {
+                        if (currentDate > endDate) break;
+                        const matchedDay = getMatchedDay(currentDate);
+                        if (matchedDay) {
+                            addOpening(new Date(currentDate), matchedDay);
+                        }
+                        currentDate.setDate(currentDate.getDate() + 1);
                     }
-                    currentDate.setDate(currentDate.getDate() + 1);
                 }
-                currentDate.setDate(currentDate.getDate() + 7);
-            }
-        }
 
-        this.form.openings = openings;
-        
-    },
+            } else if (recurrence === '2weeks') {
+                // Similar to weekly, but skip every other week
+                while (currentDate <= endDate) {
+                    for (let i = 0; i < 7; i++) {
+                        if (currentDate > endDate) break;
+                        const matchedDay = getMatchedDay(currentDate);
+                        if (matchedDay) {
+                            addOpening(new Date(currentDate), matchedDay);
+                        }
+                        currentDate.setDate(currentDate.getDate() + 1);
+                    }
+                    currentDate.setDate(currentDate.getDate() + 7);
+                }
+            }
+
+            this.form.openings = openings;
+            
+        },
     createListing () {
         this.form.tags = this.form.tags.split(',').map(tag => tag.trim()).filter(tag => tag.length > 0);
         this.form.amenities = this.form.amenities.filter(a => a.checked).map(a => a.name)

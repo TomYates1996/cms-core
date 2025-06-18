@@ -22,7 +22,6 @@ defineProps<{
                     <div class="space-y-2 text-center">
                         <h1 class="text-xl font-medium">{{ title }}</h1>
                         <p class="text-center text-sm text-muted-foreground">{{ description }}</p>
-                        <p>Username = test@test.com, password = testtest</p>
                     </div>
                 </div>
                 <slot />
@@ -35,6 +34,8 @@ defineProps<{
 .login-page {
     background-color: var(--cms-white);
     color: var(--cms-black);
+    max-width: 500px;
+    margin: 20px auto;
     .text-muted-foreground {
         color: var(--cms-black);;
     }

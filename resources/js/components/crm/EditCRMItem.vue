@@ -569,9 +569,27 @@ methods: {
             console.error("Failed to load categories", err);
         });
     },
-    onMediaGalleryChange(event) {
+    async onMediaGalleryChange(event) {
         const files = Array.from(event.target.files);
-        this.form.media_gallery.push(...files);
+
+        const options = {
+            maxSizeMB: 1,
+            maxWidthOrHeight: 1200,
+            useWebWorker: true,
+        };
+
+        const compressedFiles = await Promise.all(
+            files.map(async (file) => {
+                try {
+                    return await imageCompression(file, options);
+                } catch (error) {
+                    console.error('Compression error:', error);
+                    return file; 
+                }
+            })
+        );
+
+        this.form.media_gallery.push(...compressedFiles);
         event.target.value = null;
     },
     removeMedia(index) {
