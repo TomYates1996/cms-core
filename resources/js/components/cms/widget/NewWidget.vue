@@ -57,19 +57,19 @@
               Slides
             </label>
             <label style="margin-right: 15px;" v-if="$page.props.cms.blog">
-                <input type="radio" value="blog" v-model="widget.feed_type" />
+                <input type="radio" value="blog" v-model="newWidget.feed_type" />
                   Blog
             </label>
             <label style="margin-right: 15px;" v-if="$page.props.cms.listings">
-              <input type="radio" value="listings" v-model="widget.feed_type" />
+              <input type="radio" value="listings" v-model="newWidget.feed_type" />
               Listings
             </label>
             <label v-if="$page.props.cms.events"> 
-              <input type="radio" value="events" v-model="widget.feed_type" />
+              <input type="radio" value="events" v-model="newWidget.feed_type" />
               Events
             </label>
             <label v-if="$page.props.cms.products">
-              <input type="radio" value="products" v-model="widget.feed_type" />
+              <input type="radio" value="products" v-model="newWidget.feed_type" />
               Products
             </label>
           </div>
