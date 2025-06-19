@@ -1,7 +1,12 @@
 <template>
             <div class="page-wrap">
                 <div class="page-left">
-                    <h1 class="crm-header">Slides</h1>
+                    <div class="crm-header-wrap">
+                        <h1 class="crm-header">Slides</h1>
+                        <button class="cms-btn-default new-slide-toggle" @click="newSlide()" aria-expanded="showNewSlide.toString()" aria-controls="new-slide-form" aria-label="Create a new slide">
+                            {{  showModal.new ? 'Cancel' : 'New Slide' }}
+                        </button>
+                    </div>
                     <table v-if="!showModal.edit && !showModal.new" class="page-list slide-list" role="table" aria-label="Slide List">
                         <thead>
                             <tr class="table-head">
@@ -34,11 +39,6 @@
 
                     <EditSlide v-if="showModal.edit" :pages="pages" :slide="currentSlide" :images="images" @cancelEdit="cancelEdit()"/>
                     <Newslide v-if="showModal.new" :pages="pages" :images="images" @refreshImages="getImages" @cancelNew="newSlide()"/>
-                </div>
-                <div class="page-right">
-                    <button class="cms-btn-default new-slide-toggle" @click="newSlide()" aria-expanded="showNewSlide.toString()" aria-controls="new-slide-form" aria-label="Create a new slide">
-                        {{  showModal.new ? 'Cancel' : 'New Slide' }}
-                    </button>
                 </div>
             </div>
 

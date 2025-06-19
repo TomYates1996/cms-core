@@ -1,28 +1,26 @@
 <template>
     <section class="crm-page page-wrap">
         <main class="page-left" role="main" aria-label="Coupons management">
-        <NewCoupon v-if="showNewCoupon" id="newCouponForm" />
-
-        <section v-else class="list-wrap coupon-list-wrap" aria-labelledby="couponsHeading">
-            <h1 id="couponsHeading" class="crm-header section-title">Coupons</h1>
-            <ul class="list coupon-list" role="list">
-            <li v-for="coupon in useCoupons" :key="coupon.id" class="list-item coupon-list-item" role="listitem">
-                <p class="coupon-code">{{ coupon.code }}</p>
-                <p class="coupon-discount">{{ coupon.discount_percentage }}%</p>
-                <p class="coupon-status">{{ coupon.active ? 'Active' : 'Disabled' }}</p>
-                <button v-if="$page.props.auth.user" class="btn-option option" @click="deleteCoupon(coupon.id)" :aria-label="`Delete coupon: ${coupon.code}`" title="Delete coupon">
-                <font-awesome-icon :icon="['fas', 'trash-can']" />
-                </button>
-            </li>
-            </ul>
-        </section>
+            <NewCoupon v-if="showNewCoupon" id="newCouponForm" />
+            <section v-else class="list-wrap coupon-list-wrap" aria-labelledby="couponsHeading">
+                <div class="crm-header-wrap">
+                    <h1 id="couponsHeading" class="crm-header section-title">Coupons</h1>
+                    <button class="btn-primary new-layout" @click="showNewCoupon = !showNewCoupon" :aria-expanded="showNewCoupon.toString()" aria-controls="newCouponForm">
+                        {{ showNewCoupon ? 'Cancel' : 'New Coupon' }}
+                    </button>
+                </div>
+                <ul class="list coupon-list" role="list">
+                    <li v-for="coupon in useCoupons" :key="coupon.id" class="list-item coupon-list-item" role="listitem">
+                        <p class="coupon-code">{{ coupon.code }}</p>
+                        <p class="coupon-discount">{{ coupon.discount_percentage }}%</p>
+                        <p class="coupon-status">{{ coupon.active ? 'Active' : 'Disabled' }}</p>
+                        <button v-if="$page.props.auth.user" class="btn-option option" @click="deleteCoupon(coupon.id)" :aria-label="`Delete coupon: ${coupon.code}`" title="Delete coupon">
+                        <font-awesome-icon :icon="['fas', 'trash-can']" />
+                        </button>
+                    </li>
+                </ul>
+            </section>
         </main>
-
-        <aside class="page-right sidebar" role="complementary" aria-label="Coupon actions">
-        <button class="btn-primary new-layout" @click="showNewCoupon = !showNewCoupon" :aria-expanded="showNewCoupon.toString()" aria-controls="newCouponForm">
-            {{ showNewCoupon ? 'Cancel' : 'New Coupon' }}
-        </button>
-        </aside>
     </section>
 </template>
   

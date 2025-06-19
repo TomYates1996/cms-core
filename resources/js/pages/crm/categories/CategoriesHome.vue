@@ -5,7 +5,19 @@
             <NewSubcategory :forText="currentCategory.name" :parentId="currentCategory.id" v-if="showNewSubCategory" @subcategory-created="addNewSubcategory" id="newSubCategoryForm" />
             
             <div v-if="!showNewCategory" class="category-list-wrap crm-list-wrap">
-                <h1 class="crm-header">{{ showSubCategories ? `Sub Categories - ${currentCategory.name}` : 'Categories' }}</h1>
+                <div class="crm-header-wrap">
+                    <h1 class="crm-header">{{ showSubCategories ? `Sub Categories - ${currentCategory.name}` : 'Categories' }}</h1>
+                    <button v-if="!showSubCategories" class="new-layout" @click="showNewCategory = !showNewCategory" :aria-expanded="showNewCategory.toString()" aria-controls="newCategoryForm">
+                        {{ showNewCategory ? 'Cancel' : 'New Category' }}
+                    </button>
+                    <button v-if="showSubCategories" class="new-layout" @click="showNewSubCategory = !showNewSubCategory" :aria-expanded="showNewSubCategory.toString()" aria-controls="newSubCategoryForm">
+                        {{ showNewSubCategory ? 'Cancel' : 'New Sub Category' }}
+                    </button>
+                    <button v-if="showSubCategories" class="new-layout" @click="closeSubcatList()" aria-label="Back to Categories">
+                        Back
+                    </button>
+                </div>
+
                 <ul class="category-list crm-list">
                     <li v-for="category in useCategories" :key="category.id" class="category-list-item crm-list-item">
                         <a :href="`/category/${category.slug}`">{{ category.name }}</a>
@@ -19,18 +31,6 @@
                 </ul>
             </div>
         </section>
-
-        <aside class="page-right">
-            <button v-if="!showSubCategories" class="new-layout" @click="showNewCategory = !showNewCategory" :aria-expanded="showNewCategory.toString()" aria-controls="newCategoryForm">
-                {{ showNewCategory ? 'Cancel' : 'New Category' }}
-            </button>
-            <button v-if="showSubCategories" class="new-layout" @click="showNewSubCategory = !showNewSubCategory" :aria-expanded="showNewSubCategory.toString()" aria-controls="newSubCategoryForm">
-                {{ showNewSubCategory ? 'Cancel' : 'New Sub Category' }}
-            </button>
-            <button v-if="showSubCategories" class="new-layout" @click="closeSubcatList()" aria-label="Back to Categories">
-                Back
-            </button>
-        </aside>
     </div>
 </template>
 

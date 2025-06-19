@@ -4,25 +4,25 @@
             <NewCRMItem v-if="showNewListing" :isListing="true" :listings="listings" :item="'listing'" @cancelNew="showNewListing = false" id="newListingForm" />
             <EditCRMItem v-if="showEditItem" :existingItem="listingToEdit" :isListing="true" :listings="listings" @cancelNew="showEditItem = false"/>
             <section v-if="!showNewListing && !showEditItem" class="list-wrap listing-list-wrap">
-                <h1 class="crm-header">Listings</h1>
+                <div class="crm-header-wrap">
+                    <h1 class="crm-header">Listings</h1>
+                    <button class="btn-toggle new-layout" @click="showNewListing = !showNewListing" :aria-expanded="showNewListing.toString()" aria-controls="newListingForm">
+                        {{ showNewListing ? 'Cancel' : 'New Listing' }}
+                    </button>
+                </div>
                 <ul class="list listing-list">
-                <li v-for="listing in listings" :key="listing.id" class="list-item listing-list-item">
-                    <a :href="`/listing/${listing.slug}`">{{ listing.title }}</a>
-                    <button class="edit-item" @click="editListing(listing.id)">
-                        Edit Listing
-                    </button>
-                    <button v-if="$page.props.auth.user" class="btn-option" @click="deleteListing(listing.id)" :aria-label="`Delete listing: ${listing.title}`" title="Delete listing">
-                    <font-awesome-icon :icon="['fas', 'trash-can']" />
-                    </button>
-                </li>
+                    <li v-for="listing in listings" :key="listing.id" class="list-item listing-list-item">
+                        <a :href="`/listing/${listing.slug}`">{{ listing.title }}</a>
+                        <button class="edit-item" @click="editListing(listing.id)">
+                            Edit Listing
+                        </button>
+                        <button v-if="$page.props.auth.user" class="btn-option" @click="deleteListing(listing.id)" :aria-label="`Delete listing: ${listing.title}`" title="Delete listing">
+                        <font-awesome-icon :icon="['fas', 'trash-can']" />
+                        </button>
+                    </li>
                 </ul>
             </section>
         </main>
-        <aside class="page-right">
-        <button class="btn-toggle new-layout" @click="showNewListing = !showNewListing" :aria-expanded="showNewListing.toString()" aria-controls="newListingForm">
-            {{ showNewListing ? 'Cancel' : 'New Listing' }}
-        </button>
-        </aside>
     </div>
 </template>
 

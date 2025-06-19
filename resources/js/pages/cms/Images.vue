@@ -1,7 +1,10 @@
 <template>
     <div class="page">
         <div class="page-left">
-            <h1 class="crm-header">Images</h1>
+            <div class="crm-header-wrap">
+                <h1 class="crm-header">Images</h1>
+                <button @click="showNew = !showNew">{{ showNew ? 'Cancel' : 'New Image' }}</button>
+            </div>
             <div v-if="!showNew && !showEdit" class="image-grid">
                 <div class="image-item" v-for="image in images" :key="image.id">
                     <img class="" @click="editImage(image)" :src="'/' + image.image_path" :alt="image.image_alt">
@@ -11,9 +14,7 @@
             <NewImage v-if="showNew" @refreshImages="refreshImages()"/>
             <EditImage v-if="showEdit" :image="imageToEdit" @close-edit="showEdit = false"/>
         </div>
-        <div class="page-right">
-            <button class="new-btn" @click="showNew = !showNew">{{ showNew ? 'Cancel' : 'New Image' }}</button>
-        </div>
+
     </div>
 </template>
 

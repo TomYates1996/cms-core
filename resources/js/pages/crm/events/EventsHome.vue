@@ -4,7 +4,12 @@
             <NewCRMItem v-if="showNewListing" :isEvent="true" :events="events" :item="'event'" @cancelNew="showNewListing = false" id="newEventForm" />
             <EditCRMItem v-if="showEditItem" :existingItem="eventToEdit" :isEvent="true" :events="events" @cancelNew="showEditItem = false"/>
             <section v-if="!showNewListing && !showEditItem" class="list-wrap event-list-wrap">
-                <h1 class="crm-header">Events</h1>
+                <div class="crm-header-wrap">
+                    <h1 class="crm-header">Events</h1>
+                    <button class="btn-toggle new-layout" @click="showNewListing = !showNewListing" :aria-expanded="showNewListing.toString()" aria-controls="newEventForm">
+                        {{ showNewListing ? 'Cancel' : 'New Event' }}
+                    </button>
+                </div>
                 <ul class="list event-list">
                 <li v-for="event in events" :key="event.id" class="list-item event-list-item">
                     <a :href="`/event/${event.slug}`">{{ event.title }}</a>
@@ -18,11 +23,6 @@
                 </ul>
             </section>
         </main>
-        <aside class="page-right">
-            <button class="btn-toggle new-layout" @click="showNewListing = !showNewListing" :aria-expanded="showNewListing.toString()" aria-controls="newEventForm">
-                {{ showNewListing ? 'Cancel' : 'New Event' }}
-            </button>
-        </aside>
     </div>
 </template>
 

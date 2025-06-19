@@ -1,24 +1,24 @@
 <template>
     <div class="page-wrap">
-      <div class="page-left">
-        <NewLayout v-if="showNewLayout" @cancelNew="showNewLayout = false" />
-        <div v-if="!showNewLayout" class="layout-list-wrap">
-          <h1 class="crm-header">Layouts</h1>
-          <ul class="layout-list">
-            <li v-for="layout in localLayouts" :key="layout.id" class="layout-list-item">
-              <p>{{ layout.title }}</p>
-                <button v-if="$page.props.auth.user" class="option" @click="deleteLayout(layout.id)" title="Delete layout" aria-label="Delete layout: {{ layout.title }}">
-                    <font-awesome-icon :icon="['fas', 'trash-can']" />
-                </button>
-                <Link v-if="$page.props.auth.user" :href="`/cms/layouts/edit-content/${layout.id}`" title="Edit content" method="get" class="option" role="button" aria-label="Edit content for {{ layout.title }}">
-                    <font-awesome-icon :icon="['fas', 'pen-to-square']" />
-                    </Link>
-                </li>
-            </ul>
-        </div>
-        </div>
-        <div class="page-right">
-            <button class="new-layout" @click="showNewLayout = !showNewLayout" aria-expanded="showNewLayout" aria-controls="newLayoutModal">{{ showNewLayout ? 'Cancel' : 'New Layout' }}</button>
+        <div class="page-left">
+            <NewLayout v-if="showNewLayout" @cancelNew="showNewLayout = false" />
+            <div v-if="!showNewLayout" class="layout-list-wrap">
+                <div class="crm-header-wrap">
+                    <h1 class="crm-header">Layouts</h1>
+                    <button class="new-layout" @click="showNewLayout = !showNewLayout" aria-expanded="showNewLayout" aria-controls="newLayoutModal">{{ showNewLayout ? 'Cancel' : 'New Layout' }}</button>
+                </div>
+            <ul class="layout-list">
+                <li v-for="layout in localLayouts" :key="layout.id" class="layout-list-item">
+                <p>{{ layout.title }}</p>
+                    <button v-if="$page.props.auth.user" class="option" @click="deleteLayout(layout.id)" title="Delete layout" aria-label="Delete layout: {{ layout.title }}">
+                        <font-awesome-icon :icon="['fas', 'trash-can']" />
+                    </button>
+                    <Link v-if="$page.props.auth.user" :href="`/cms/layouts/edit-content/${layout.id}`" title="Edit content" method="get" class="option" role="button" aria-label="Edit content for {{ layout.title }}">
+                        <font-awesome-icon :icon="['fas', 'pen-to-square']" />
+                        </Link>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </template>
