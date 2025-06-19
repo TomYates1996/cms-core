@@ -422,7 +422,7 @@
 
 
       <button type="submit" class="cms-btn-default" tabindex="5" :disabled="form.processing" :aria-busy="form.processing">
-        <LoaderCircle v-if="form.processing" class="h-4 w-4 animate-spin" /> Save Listing
+        <LoaderCircle v-if="form.processing" class="h-4 w-4 animate-spin" /> Save {{ isEvent ? 'Event' : 'Listing' }}
       </button>
       <button type="button" class="cms-btn-default" tabindex="6" :disabled="form.processing" @click.prevent="cancelNew()" >
         Cancel

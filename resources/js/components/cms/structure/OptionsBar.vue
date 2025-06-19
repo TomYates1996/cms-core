@@ -11,6 +11,7 @@
                 <span aria-hidden="hidden"><font-awesome-icon :icon="this.expanded.pages ? ['fas', 'sort-up'] : ['fas', 'sort-down']" /></span>
             </button>
             <Link 
+                @click="closeMenu"
                 v-if="$page.props.auth.user && this.expanded.pages"
                 href="/cms/pages/primary"
                 method="get"
@@ -19,6 +20,7 @@
                 Primary
             </Link>
             <Link 
+                @click="closeMenu"
                 v-if="$page.props.auth.user && this.expanded.pages"
                 href="/cms/pages/secondary"
                 method="get"
@@ -27,6 +29,7 @@
                 Secondary
             </Link>
             <Link 
+                @click="closeMenu"
                 v-if="$page.props.auth.user && this.expanded.pages"
                 href="/cms/pages/footer"
                 method="get"
@@ -37,6 +40,7 @@
         </li>
         <li>
             <Link 
+                @click="closeMenu"
                 v-if="$page.props.auth.user"
                 href="/cms/slides"
                 method="get"
@@ -47,6 +51,7 @@
         </li>
         <li>
             <Link 
+                @click="closeMenu"
                 v-if="$page.props.auth.user"
                 href="/cms/images"
                 method="get"
@@ -57,6 +62,7 @@
         </li>
         <li>
             <Link 
+                @click="closeMenu"
                 v-if="$page.props.auth.user"
                 href="/cms/layouts"
                 method="get"
@@ -67,6 +73,7 @@
         </li>
         <li>
             <Link 
+                @click="closeMenu"
                 v-if="$page.props.cms.blog && $page.props.auth.user"
                 href="/cms/blog"
                 method="get"
@@ -81,6 +88,7 @@
                 <span aria-hidden="hidden"><font-awesome-icon :icon="this.expanded.crm ? ['fas', 'sort-up'] : ['fas', 'sort-down']" /></span>
             </button>
             <Link 
+                @click="closeMenu"
                 v-if="$page.props.cms.listings && $page.props.auth.user && this.expanded.crm"
                 href="/cms/crm/listings"
                 method="get"
@@ -89,6 +97,7 @@
                 Listings
             </Link>
             <Link 
+                @click="closeMenu"
                 v-if="$page.props.cms.events && $page.props.auth.user && this.expanded.crm"
                 href="/cms/crm/events"
                 method="get"
@@ -97,6 +106,7 @@
                 Events
             </Link>
             <Link 
+                @click="closeMenu"
                 v-if="$page.props.cms.products && $page.props.auth.user && this.expanded.crm"
                 href="/cms/crm/products"
                 method="get"
@@ -105,6 +115,7 @@
                 Products
             </Link>
             <Link 
+                @click="closeMenu"
                 v-if="$page.props.cms.categories && $page.props.auth.user && this.expanded.crm"
                 href="/cms/crm/categories"
                 method="get"
@@ -113,6 +124,7 @@
                 Categories
             </Link>
             <Link 
+                @click="closeMenu"
                 v-if="$page.props.cms.coupons && $page.props.auth.user && this.expanded.crm"
                 href="/cms/crm/coupons"
                 method="get"
@@ -146,6 +158,9 @@ export default {
         toggle(navItem) {
             this.expanded[navItem] = !this.expanded[navItem]
         },
+        closeMenu() {
+            this.menuOpen = false;
+        }
     },
 
 }

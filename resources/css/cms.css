@@ -9,11 +9,18 @@
     --cms-dark-grey: #434343; /* Dark Grey */
     --cms-black: #000000; /* Black */
     --cms-white: #FFFFFF; /* White */ 
+    --cms-background: var(--cms-white);
+    --cms-border: var(--cms-black);
+
     
     /* CMS Font */
     --cms-font-main: "Inter", sans-serif;
 }
 
+html.dark {
+    --cms-background: var(--cms-dark-grey);
+    --cms-border: var(--cms-white);
+}
 
 /* CRM STYLING */
 .crm-header {
@@ -61,3 +68,295 @@
         color: var(--cms-black);
     }
 }
+
+html {
+    }
+    html.dark {
+        background-color: var(--cms-dark-grey);
+    }
+    /* You can delete the above cms-background variables as they are added to the core cms file */
+    .dark {
+        body #app {
+            .table-head {
+                border-color: var(--cms-white);
+            }
+            background-color: var(--cms-dark-grey);
+            .layout.cms {
+                input {
+                    color: var(--cms-black);
+                }
+                input[type="file"] {
+                    color: var(--cms-white);
+                }
+                select {
+                    color: var(--cms-black);
+                }
+                .image-grid {
+                    .image-item .edit-image {
+                        color: var(--cms-tertiary);
+                    }
+                }
+                .sidebar {
+                    .cms-title-label {
+                        background-color: var(--cms-tertiary);
+                    }
+                    ul.cms-options-menu {
+                        background-color: var(--cms-secondary);
+                        color: var(--cms-black);
+                        border-bottom-color: var(--cms-black);
+                        li {
+                            border-top-color: var(--cms-black);
+                            .option.nav-child {
+                                border-top-color: var(--cms-black);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .login-page {
+            background-color: var(--cms-dark-grey);
+            color: var(--cms-white);
+            p {
+                color: var(--cms-white);
+            }
+            .text-muted-foreground {
+                color: var(--cms-white);
+            }
+            .ring-offset-background {
+                border-color: var(--cms-white);
+            }
+        }
+    }
+    #app {
+        .login-page {
+            h1 {
+                font-size: 1.75rem;
+            }
+        }  
+        .layout.cms {
+            flex-direction: column;
+            .main-content {
+                .image-grid {
+                    grid-template-columns: repeat(3, 1fr);
+                    .image-item {
+                        aspect-ratio: 1;
+                    }
+                }
+                .cancel-update-slide {
+                    margin-bottom: 30px;
+                }
+                .cancel-new-slide {
+                    opacity: 0;
+                }
+                .page {
+                    .page-left {
+                        width: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        .crm-header {
+                            margin-bottom: 10px;
+                            border-color: var(--cms-border);
+                            width: fit-content;
+                        }
+                        .image-grid {
+                            background-color: transparent;
+                        }
+                        .new-image {
+                            background-color: var(--cms-background);
+                            overflow: hidden;
+                        }
+                    }
+                    .page-right {
+                        width: 100%;
+                        border-left: none;
+                        position: fixed;
+                        bottom: 0px;
+                        padding: 0px;
+                        left: 0px;
+                        background-color: var(--cms-background);
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        justify-content: center;
+                        gap: 3px;
+                        .new-btn {
+                            width: 100%;
+                            background-color: var(--cms-tertiary);
+                            color: var(--white);
+                            font-weight: 600;
+                            padding: 20px;
+                            transition: all 0.25s ease;
+                            border-radius: 0px;
+                            border: 1px solid var(--cms-black);
+                            border-bottom: none;
+                        }
+                        @media (hover:hover) {
+                            .new-btn:hover {
+                                background-color: var(--cms-secondary);
+                            }
+                        }
+                    }
+                }
+                width: 100%;
+                padding: 20px;
+                .top-row-dashboard {
+                    gap: 16px;
+                    .top-pages h2,
+                    .top-products h2 {
+                        font-size: 1.375rem;
+                    }
+                    .top-pages tbody td:first-of-type,
+                    .top-products tbody td:first-of-type,
+                    .top-products tr th:first-of-type,
+                    .top-pages tr th:first-of-type {
+                        display: none;
+                    }
+                }
+            }
+            .sidebar {
+                width: 100%;
+                .cms-title-label {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    padding: 10px 20px;
+                    background-color: var(--cms-primary);
+                    a {
+                        padding: 0px;
+                        font-size: 1.25rem;
+                    }
+                    button.cms-options-toggle {
+                        font-size: 26px;
+                    }
+                }
+                ul.cms-options-menu {
+                    border-bottom: 2px solid var(--cms-black);
+                    display: flex;
+                }
+            }
+            .page-wrap {
+                flex-direction: column;
+                .page-left {
+                    width: 100%;
+                    .crm-header {
+                        margin-bottom: 10px;
+                        border-color: var(--cms-border);
+                        width: fit-content;
+                    }
+                    .table-head {
+                        border-color: var(--cms-border);
+                        border-top: 1px solid var(--cms-border);
+                        border-bottom: 1px solid var(--cms-border);
+                    }
+                    .page-list tbody td:nth-of-type(3),
+                    .page-list tbody td:nth-of-type(4),
+                    .page-list .table-head th:nth-of-type(3),
+                    .page-list .table-head th:nth-of-type(4) {
+                        display: none;
+                    }
+                    .new-crm-item {
+                        .form-inner {
+                            padding-bottom: 20px;
+                            .cms-btn-default[type="submit"] {
+                                margin-bottom: 40px;
+                                margin-top: 10px;
+                            }
+                            .cms-btn-default:last-of-type {
+                                display: none;
+                            }
+                            .form-title {
+                                font-size: 22px;
+                            }
+                            display: flex;
+                            flex-direction: column;
+                            flex-wrap: wrap;
+                            .form-section {
+                                padding: 10px 0px;
+                                border: none;
+                                .form-field {
+                                    flex-direction: column;
+                                    .prices-list {
+                                        flex-direction: column;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .page-right {
+                    width: 100%;
+                    border-left: none;
+                    position: fixed;
+                    bottom: 0px;
+                    padding: 0px;
+                    left: 0px;
+                    background-color: var(--cms-background);
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 3px;
+                    .cms-btn-default,
+                    .new-layout {
+                        width: 100%;
+                        background-color: var(--cms-tertiary);
+                        color: var(--white);
+                        font-weight: 600;
+                        padding: 20px;
+                        transition: all 0.25s ease;
+                        border-radius: 0px;
+                        border: 1px solid var(--cms-black);
+                        border-bottom: none;
+                    }
+                    @media (hover:hover) {
+                        .cms-btn-default:hover,
+                        .new-layout:hover {
+                            background-color: var(--cms-secondary);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+    @media screen and (min-width: 40em) {
+        .dark {
+            nav.options-nav {
+                background-color: var(--cms-secondary);
+            }
+        }
+
+        #app {
+            .login-page {
+                h1 {
+                    font-size: 2.125rem;
+                }
+            }  
+            .layout.cms {
+                flex-direction: row;
+                .sidebar {
+                    width: 25%;
+                    .cms-title-label {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        padding: 10px 20px;
+                        background-color: var(--cms-primary);
+                        a {
+                            padding: 0px;
+                            font-size: 1.25rem;
+                        }
+                        button.cms-options-toggle {
+                            font-size: 26px;
+                        }
+                    }
+                    ul.cms-options-menu {
+                        display: flex;
+                        border-bottom: 2px solid var(--cms-white);
+                    }
+                }
+            }
+        }
+    }
