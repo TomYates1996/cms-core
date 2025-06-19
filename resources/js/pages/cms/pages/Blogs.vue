@@ -4,7 +4,12 @@
             <NewBlog v-if="showNewBlogPost" id="newBlogPostModal" @cancelNew="showNewBlogPost = false" />
             
             <div v-else class="blog-list-wrap crm-list-wrap">
-                <h1 class="crm-header">Blogs</h1>
+                <div class="crm-header-wrap">
+                    <h1 class="crm-header">Blogs</h1>
+                    <button class="new-layout" @click="showNewBlogPost = !showNewBlogPost" :aria-expanded="showNewBlogPost.toString()" aria-controls="newBlogPostModal">
+                        {{ showNewBlogPost ? 'Cancel' : 'New Blog' }}
+                    </button>
+                </div>
                 <ul class="blog-list crm-list">
                 <li v-for="blog in blogPosts" :key="blog.id" class="blog-list-item crm-list-item">
                     <a :href="`/${$page.props.cms.blog_page}/post/${blog.slug}`">{{ blog.title }}</a>
@@ -20,12 +25,6 @@
                 </ul>
             </div>
         </section>
-
-        <aside class="page-right">
-            <button class="new-layout" @click="showNewBlogPost = !showNewBlogPost" :aria-expanded="showNewBlogPost.toString()" aria-controls="newBlogPostModal">
-                {{ showNewBlogPost ? 'Cancel' : 'New Blog' }}
-            </button>
-        </aside>
     </div>
 </template>
 
