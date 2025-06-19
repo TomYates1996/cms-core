@@ -1,7 +1,10 @@
 <template>
-  <nav>
-    <a href="/cms/dashboard" class="app-name" aria-label="Go to CMS dashboard">{{ $page.props.cms.site_name }}</a>
-    <ul>
+  <nav class="options-nav">
+    <div class="cms-title-label">
+        <a href="/cms/dashboard" class="app-name" aria-label="Go to CMS dashboard">{{ $page.props.cms.site_name }}</a>
+        <button class="cms-options-toggle" @click="menuOpen = !menuOpen"><font-awesome-icon :icon="['fas', menuOpen ? 'xmark' : 'bars']" /></button>
+    </div>
+    <ul class="cms-options-menu" v-show="menuOpen">
         <li>
             <button @click="toggle('pages')" :aria-expanded="this.expanded.pages" :aria-controls="'section-pages'" class="option accordion-toggle">
                 Pages
@@ -133,6 +136,7 @@ export default {
     },
     data() {
         return {
+            menuOpen : false,
             expanded: {
                 pages: false,
             }
@@ -156,7 +160,9 @@ export default {
             display: flex;
             font-weight: 600;
         }
-        ul {
+        ul.cms-options-menu {
+            display: none;
+            flex-direction: column;
             li {
                 display: flex;
                 flex-direction: column;
@@ -182,6 +188,20 @@ export default {
             li:first-of-type {
                 border-top: 4px solid var(--cms-black);
             }
+        }
+    }
+
+    .cms-options-toggle {
+        display: flex;
+    }
+
+     @media (min-width: 40rem) {
+        .cms-options-toggle {
+            display: none;
+        }
+        ul.cms-options-menu {
+            display: flex !important;
+            flex-direction: column; 
         }
     }
 </style>
