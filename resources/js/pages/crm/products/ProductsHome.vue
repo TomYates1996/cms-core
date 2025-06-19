@@ -1,20 +1,20 @@
 <template>
     <section class="crm-page page-wrap">
         <main class="page-left" role="main" aria-label="Products management">
-        <NewProduct :products="products" :variantTypes="variantTypes" v-if="showNewListing" @cancelNew="showNewListing = false" id="newProductForm" />
-        
-        <section v-else class="list-wrap product-list-wrap" aria-labelledby="productsHeading">
-            <div class="crm-header-wrap">
-                <h1 id="productsHeading" class="crm-header section-title">Products</h1>
-                <button class="btn-primary new-layout" @click="showNewListing = !showNewListing" :aria-expanded="showNewListing.toString()" aria-controls="newProductForm">
-                    {{ showNewListing ? 'Cancel' : 'Add Product' }}
-                </button>
+            
+            <NewProduct :products="products" :variantTypes="variantTypes" v-if="showNewListing" @cancelNew="showNewListing = false" id="newProductForm" />
+            <section v-else class="list-wrap product-list-wrap" aria-labelledby="productsHeading">
+                <div class="crm-header-wrap">
+                    <h1 id="productsHeading" class="crm-header section-title">Products</h1>
+                    <button class="btn-primary new-layout" @click="showNewListing = !showNewListing" :aria-expanded="showNewListing.toString()" aria-controls="newProductForm">
+                        {{ showNewListing ? 'Cancel' : 'Add Product' }}
+                    </button>
             </div>
             <ul class="list product-list" role="list">
                 <li v-for="product in products" :key="product.id" class="list-item product-list-item" role="listitem">
                     <a :href="`/product/${product.slug}`" class="list-link product-link">{{ product.label }}</a>
                     <button v-if="$page.props.auth.user" class="btn-option option" @click="deleteListing(product.id)" :aria-label="`Delete product: ${product.label}`" title="Delete product">
-                    <font-awesome-icon :icon="['fas', 'trash-can']" />
+                        <font-awesome-icon :icon="['fas', 'trash-can']" />
                     </button>
                 </li>
             </ul>

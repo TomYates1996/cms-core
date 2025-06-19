@@ -40,17 +40,6 @@
             <NewPage v-if="showModal.new" :parent="parent" :section="section" @cancelNew="toggleNew"/>
             <NewPageLink v-if="showModal.newLink" :parent="parent" :section="section"/>
         </div>
-        <div class="page-right">
-            <button @click="toggleNew()" :aria-expanded="showModal.new.toString()" :aria-controls="'newPageForm'" class="cms-btn-default">
-                {{ showModal.new ? 'Cancel' : 'New Page' }}
-            </button>
-            <button @click="toggleNewLink()" :aria-expanded="showModal.newLink.toString()" :aria-controls="'newPageLinkForm'" class="cms-btn-default">
-                {{ showModal.newLink ? 'Cancel' : 'New Page Link' }}
-            </button>
-            <Link v-if="$page.props.auth.user && parent" :href="this.parentUrl" method="get" role="button" class="cms-btn-default" aria-label="Return to parent page">
-                Parent
-            </Link>
-        </div>
     </div>
 </template>
   

@@ -284,38 +284,6 @@ html {
                         }
                     }
                 }
-                .page-right {
-                    width: 100%;
-                    border-left: none;
-                    position: fixed;
-                    bottom: 0px;
-                    padding: 0px;
-                    left: 0px;
-                    background-color: var(--cms-background);
-                    display: flex;
-                    flex-direction: row;
-                    align-items: center;
-                    justify-content: center;
-                    gap: 3px;
-                    .cms-btn-default,
-                    .new-layout {
-                        width: 100%;
-                        background-color: var(--cms-tertiary);
-                        color: var(--white);
-                        font-weight: 600;
-                        padding: 20px;
-                        transition: all 0.25s ease;
-                        border-radius: 0px;
-                        border: 1px solid var(--cms-black);
-                        border-bottom: none;
-                    }
-                    @media (hover:hover) {
-                        .cms-btn-default:hover,
-                        .new-layout:hover {
-                            background-color: var(--cms-secondary);
-                        }
-                    }
-                }
             }
         }
     }
@@ -360,3 +328,145 @@ html {
             }
         }
     }
+
+    @media screen and (min-width: 64em) {
+        #app {
+        .layout.cms {
+            .main-content {
+                .image-grid {
+                    grid-template-columns: repeat(5, 1fr);
+                    .image-item {
+                        aspect-ratio: 1;
+                    }
+                }
+                .cancel-new-slide {
+                    opacity: 0;
+                }
+                .page {
+                    .page-left {
+                        width: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        .crm-header {
+                            margin-bottom: 10px;
+                            border-color: var(--cms-border);
+                            width: fit-content;
+                        }
+                        .image-grid {
+                            background-color: transparent;
+                        }
+                        .new-image {
+                            background-color: var(--cms-background);
+                            overflow: hidden;
+                        }
+                    }
+                }
+                .top-row-dashboard {
+                    .top-pages tbody td:first-of-type,
+                    .top-products tbody td:first-of-type,
+                    .top-products tr th:first-of-type,
+                    .top-pages tr th:first-of-type {
+                        display: block;
+                    }
+                }
+            }
+            .page-wrap {
+                .page-left {
+                    .page-list tbody td:nth-of-type(3),
+                    .page-list tbody td:nth-of-type(4),
+                    .page-list .table-head th:nth-of-type(3),
+                    .page-list .table-head th:nth-of-type(4) {
+                        display: block;
+                    }
+                    .new-crm-item {
+                        .form-inner {
+                            padding-bottom: 20px;
+                            .cms-btn-default[type="submit"] {
+                                margin-bottom: 40px;
+                                margin-top: 10px;
+                            }
+                            .cms-btn-default:last-of-type {
+                                display: none;
+                            }
+                            .form-title {
+                                font-size: 22px;
+                            }
+                            display: flex;
+                            flex-direction: column;
+                            flex-wrap: wrap;
+                            .form-section {
+                                padding: 10px 0px;
+                                border: none;
+                                .form-field {
+                                    flex-direction: column;
+                                    .prices-list {
+                                        flex-direction: column;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    }
+
+    .cms {
+    .crm-header-wrap button {
+        width: 100%;
+        border-left: none;
+        position: fixed;
+        bottom: 0px;
+        left: 0px;
+        padding: 20px;
+        background-color: var(--cms-tertiary);
+        color: var(--white);
+        font-weight: 600;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 3px;
+        transition: all 0.25s ease;
+        border-radius: 0px;
+        border: 1px solid var(--cms-black);
+        border-bottom: none;
+        @media (hover:hover) {
+            &&:hover{
+                background-color: var(--cms-secondary);
+            }
+        }
+    }
+}
+                   
+
+@media screen and (min-width: 40em) {
+    .sidebar {
+        min-width: 300px;
+    }
+    .cms {
+        .crm-header-wrap {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            button {
+                position: relative;
+                border: none;
+                width: unset;
+                background-color: var(--cms-tertiary);
+                padding: 6px 10px;
+                font-size: 1.25rem;
+                color: var(--cms-white);
+                transition: all 0.5s ease;
+            }
+            @media (hover:hover) {
+                button:hover {
+                    background-color: var(--cms-secondary);
+                    color: var(--cms-black);
+                }
+            }
+        }
+    }
+}
