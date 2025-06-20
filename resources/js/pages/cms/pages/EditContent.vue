@@ -85,7 +85,7 @@
               <div v-if="!anyTrue" class="widget-container">
                 <component v-for="widget in localContent.widgets" :key="widget.id" :is="widget.variant" :widget="widget"/>
               </div>
-              <Footer v-if="localContent.footer" :footer="localContent.footer" :pages="pages" />
+              <Footer v-if="!anyTrue && localContent.footer" :footer="localContent.footer" :pages="pages" />
         </div>
     </div>
   </template>
