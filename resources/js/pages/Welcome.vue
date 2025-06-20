@@ -1,18 +1,18 @@
 
 <template>
-    <Head title="Welcome">
+    <Head title="{{ page.title }}">
     </Head>
 
-    <HamburgerHeader :header="header" :allPages="pages" :pages="header.pages" :link="header.link" :logo="header.logo"/>
-
-    <component v-for="widget in widgets" :key="widget.id" 
-        :is="widget.variant"
-        :widget="widget"
-    />
-
-    <Footer v-if="footer" :footer="footer" :pages="pages" />
-
-
+    <div class="front-page-wrapper">
+        <HamburgerHeader :header="header" :allPages="pages" :pages="header.pages" :link="header.link" :logo="header.logo"/>
+    
+        <component v-for="widget in widgets" :key="widget.id" 
+            :is="widget.variant"
+            :widget="widget"
+        />
+    
+        <Footer v-if="footer" :footer="footer" :pages="pages" />
+    </div>
 </template>
 
 <script>
@@ -38,6 +38,7 @@ export default {
         header: Object,
         footer: Object,
         pages: Object,
+        page: Object,
     },
     data() {
         return {
