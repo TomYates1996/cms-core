@@ -23,7 +23,7 @@
       </div>
       <div class="expanding">
         <button class="header-edit-sidebar-btn" @click="headerVisible()" v-if="!isBlog">Header</button>
-        <button class="widgets-edit-sidebar-btn" @click="widgetsVisble()">Widgets</button>
+        <button class="widgets-edit-sidebar-btn" @click="widgetsVisible()">Widgets</button>
         <button class="footer-edit-sidebar-btn" @click="footerVisible()" v-if="!isBlog">Footer</button>
       </div>
       <div class="expanded-content">
