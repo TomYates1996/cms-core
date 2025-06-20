@@ -35,8 +35,6 @@ Route::get('/test-image', function () {
 Route::get('/resize/{path}', function ($path) {
     $width = request('w');
     $height = request('h');
-    dd($path, $width, $height);
-
 
     $storagePath = public_path('storage/' . $path);
 
