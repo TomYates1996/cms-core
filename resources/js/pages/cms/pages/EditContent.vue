@@ -1,5 +1,5 @@
 <template>
-  <div class="page-wrapper">
+  <div class="page-wrapper edit-content-page">
     <div class="page-left detail">
       <div class="main-buttons">
         <button v-if="!isBlog" @click="layout ? saveLayout() : savePage()" class="cms-btn-default">Save {{ layout ? 'layout' : 'page' }}</button>
@@ -21,48 +21,45 @@
               Cancel Changes
           </Link>
       </div>
-      
-      <!-- Header Sidebar -->
-      <div class="sidebar-option sidebar-header" v-if="!isBlog">
-        <h5>Header</h5>
-        <div v-if="localContent.header" class="widget-option">
-            <p>Header - {{ localContent.header.section }}</p>
-            <button @click="editHeader()" class="edit-btn"><font-awesome-icon :icon="['fas', 'pen-to-square']" /></button>
-            <!-- <button @click="deleteElement('headers', index)" class="delete-btn"><font-awesome-icon :icon="['fas', 'trash-can']" /></button> -->
-            <button @click="showSavedNav(savedHeaders , 'headers')" class="download-btn"><font-awesome-icon :icon="['fas', 'download']"/></button>
-            <button @click="saveHeader(localContent.header, 'header')" class="save-btn"><font-awesome-icon :icon="localContent.header.is_saved ? ['fas', 'lock'] : ['fas', 'unlock']" /></button>
-        </div>
-        <!-- <button @click="openAddItem('headers')" class="cms-btn-default" v-if="localContent.headers && localContent.headers.length < 1">Add Header</button> -->
+      <div class="expanding">
+        <button class="header-edit-sidebar-btn" @click="headerVisible()" v-if="!isBlog">Header</button>
+        <button class="widgets-edit-sidebar-btn" @click="widgetsVisble()">Widgets</button>
+        <button class="footer-edit-sidebar-btn" @click="footerVisible()" v-if="!isBlog">Footer</button>
       </div>
-      <!-- Widgets Sidebar -->
-      <div class="sidebar-option sidebar-widgets">
-        <h5>Widgets</h5>
-        <div class="widget-options">
-          <div v-for="(widget, index) in localContent.widgets" :key="index" class="widget-option">
-              <p>{{ widget.label }}</p>
-              <button @click="editElement('widgets', index)" class="edit-btn"><font-awesome-icon :icon="['fas', 'pen-to-square']" /></button>
-              <div class="move-buttons">
-                <button @click="orderUp(index)" :disabled="index === 0" class="edit-btn"><font-awesome-icon :icon="['fas', 'angle-up']" /></button>
-                <button @click="orderDown(index)" :disabled="index === localContent.widgets.length - 1" class="edit-btn"><font-awesome-icon :icon="['fas', 'angle-down']" /></button>
-              </div>
-              <button @click="deleteElement('widgets', index)" class="delete-btn"><font-awesome-icon :icon="['fas', 'trash-can']" /></button>
-              <button @click="saveWidget(widget, 'widgets', index)" class="save-btn"><font-awesome-icon :icon="widget.is_saved ? ['fas', 'lock'] : ['fas', 'unlock']" /></button>
-              <button @click="cloneWidget(widget, 'widgets', index)" class="save-btn"><font-awesome-icon :icon="['fas', 'clone']" /></button>
+      <div class="expanded-content">
+        <div v-if="headerCmsVisible" class="sidebar-option sidebar-header">
+          <div v-if="localContent.header" class="widget-option">
+              <p>Header - {{ localContent.header.section }}</p>
+              <button @click="editHeader()" class="edit-btn"><font-awesome-icon :icon="['fas', 'pen-to-square']" /></button>
+              <button @click="showSavedNav(savedHeaders , 'headers')" class="download-btn"><font-awesome-icon :icon="['fas', 'download']"/></button>
+              <button @click="saveHeader(localContent.header, 'header')" class="save-btn"><font-awesome-icon :icon="localContent.header.is_saved ? ['fas', 'lock'] : ['fas', 'unlock']" /></button>
           </div>
         </div>
-        <button @click="openAddItem('widgets')" class="cms-btn-default">Add Widget</button>
-      </div>
-        <!-- Footer Sidebar -->
-        <div class="sidebar-option sidebar-footer" v-if="!isBlog">
-          <h5>Footer</h5>
+        <div v-if="widgetsCmsVisble" class="sidebar-option sidebar-widgets">
+          <div class="widget-options">
+            <div v-for="(widget, index) in localContent.widgets" :key="index" class="widget-option">
+                <p>{{ widget.label }}</p>
+                <button @click="editElement('widgets', index)" class="edit-btn"><font-awesome-icon :icon="['fas', 'pen-to-square']" /></button>
+                <div class="move-buttons">
+                  <button @click="orderUp(index)" :disabled="index === 0" class="edit-btn"><font-awesome-icon :icon="['fas', 'angle-up']" /></button>
+                  <button @click="orderDown(index)" :disabled="index === localContent.widgets.length - 1" class="edit-btn"><font-awesome-icon :icon="['fas', 'angle-down']" /></button>
+                </div>
+                <button @click="deleteElement('widgets', index)" class="delete-btn"><font-awesome-icon :icon="['fas', 'trash-can']" /></button>
+                <button @click="saveWidget(widget, 'widgets', index)" class="save-btn"><font-awesome-icon :icon="widget.is_saved ? ['fas', 'lock'] : ['fas', 'unlock']" /></button>
+                <button @click="cloneWidget(widget, 'widgets', index)" class="save-btn"><font-awesome-icon :icon="['fas', 'clone']" /></button>
+            </div>
+          </div>
+          <button @click="openAddItem('widgets')" class="cms-btn-default">Add Widget</button>
+        </div>
+        <div class="sidebar-option sidebar-footer" v-if="!isBlog && footerCmsVisble">
           <div v-if="localContent.footer" class="widget-option">
             <p>Footer - {{ localContent.footer.section }}</p>
             <button @click="editFooter()" class="edit-btn"><font-awesome-icon :icon="['fas', 'pen-to-square']" /></button>
             <!-- <button @click="deleteElement('footers', index)" class="delete-btn"><font-awesome-icon :icon="['fas', 'trash-can']" /></button> -->
             <button @click="showSavedNav(savedFooters , 'footers')" class="download-btn"><font-awesome-icon :icon="['fas', 'download']"/></button>
             <button @click="saveHeader(localContent.footer, 'footer')" class="save-btn"><font-awesome-icon :icon="localContent.footer.is_saved ? ['fas', 'lock'] : ['fas', 'unlock']" /></button>
+          </div>
         </div>
-        <!-- <button @click="openAddItem('footer')" class="cms-btn-default" v-if="localContent.footer">Add Footer</button> -->
       </div>
             <!-- <EditSlide v-if="showEditSlide" :slide="slideToEdit"/> -->
           </div>
@@ -158,6 +155,9 @@ export default {
     },
     data() {
       return {
+        footerCmsVisble: false,
+        headerCmsVisible: false,
+        widgetsCmsVisble: false,
         widgetOptions,
         showModal: {
           edit : {},
@@ -210,6 +210,21 @@ export default {
         },
    },
     methods: {
+      headerVisible() {
+        this.footerCmsVisble = false;
+        this.widgetsCmsVisble = false;
+        this.headerCmsVisible = true;
+      },
+      widgetsVisible() {
+        this.footerCmsVisble = false;
+        this.headerCmsVisible = false;
+        this.widgetsCmsVisble = true;
+      },
+      footerVisible() {
+        this.headerCmsVisible = false;
+        this.widgetsCmsVisble = false;
+        this.footerCmsVisble = true;
+      },
       setNewFooter(footer) {
         this.localContent.footer = footer;
       },
