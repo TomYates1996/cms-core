@@ -24,7 +24,6 @@ use BaseCms\Http\Controllers\CategoryController;
 
 
 Route::get('/test-image', function () {
-    dd('failed');
     $path = public_path('storage/slides/mBISSusgdfnv7DHlh1XMtmhQwt1DqAI72axjKdrQ.jpg');
 
     $img = Image::read($path)->resize(300, 200);
@@ -34,9 +33,10 @@ Route::get('/test-image', function () {
 });
 
 Route::get('/resize/{path}', function ($path) {
-    dd($path);
     $width = request('w');
     $height = request('h');
+    dd($path, $width, $height);
+
 
     $storagePath = public_path('storage/' . $path);
 
