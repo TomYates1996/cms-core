@@ -470,3 +470,109 @@ html {
         }
     }
 }
+
+.nav .widgets {
+    grid-column: 2;
+}
+.dark {
+    .page-left.detail {
+        .expanding {
+            color: var(--cms-black);
+        }
+    }
+    .edit-widget,
+    .form.tab-inners,
+    .edit-content-page .modal-content .tab-inners {
+        background-color: var(--cms-dark-grey);
+        select {
+            color: var(--black);
+        }
+        input {
+            color: var(--black);
+        }
+    }
+}
+.edit-content-page,
+.front-page-wrapper {
+    background-color: var(--white);
+}
+.edit-content-page {
+    .page-right {
+        width: 100% !important;
+        margin-bottom: 130px;
+    }
+    div.page-left.detail {
+        position: fixed;
+        bottom: 0px;
+        left: 0px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        z-index: 999;
+        height: 130px;
+        overflow: hidden;
+        border-top: 2px solid var(--cms-black);
+        border-right: none;
+        gap: 0px;
+        .main-buttons {
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+            max-width: 110px;
+            font-size: 14px;
+            border-right: 1px solid var(--cms-black);
+            border-bottom: none;
+        }
+        .expanding {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            justify-content: space-between;
+            align-items: center;
+            border-right: 1px solid var(--cms-black);
+            padding: 10px 10px;
+            background-color: var(--cms-tertiary);
+            button {
+                background-color: var(--cms-primary);
+                color: var(--cms-black);
+                width: 100%;
+                padding: 2px;
+                border: 2px solid var(--cms-white);
+                border-radius: 4px;
+                font-weight: 600;
+                font-size: .875rem;
+            }
+        }
+        .expanded-content {
+            padding: 10px;
+            overflow-y: scroll;
+            width: 100%;
+            max-width: 210px;
+            .sidebar-option {
+                padding: 0px;
+            }
+            .widget-option {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                flex-direction: column;
+                p {
+                    grid-column: 1 / span 3;
+                    font-size: .875rem;
+                }
+            }
+            .sidebar-option.sidebar-widgets {
+                gap: 8px;
+                .widget-option {
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: flex-start;
+                    align-items: flex-start;
+                    flex-direction: row;
+                    p {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}

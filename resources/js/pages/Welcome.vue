@@ -1,6 +1,6 @@
 
 <template>
-    <Head title="{{ page.title }}">
+    <Head :title="page.title">
     </Head>
 
     <div class="front-page-wrapper">

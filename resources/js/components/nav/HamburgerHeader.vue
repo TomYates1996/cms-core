@@ -1,30 +1,32 @@
 <template>
   <nav class="nav" role="navigation" :class="'menu-'+header.menu_type">
-    <a class="logo" :href="link" v-if="logo">
-      <img :src="'/' + logo.image_path" :alt="logo.image_alt">
-    </a>
-    <ul class="page-list navigation-secondary">
-      <li class="page-item level-1" v-for="page in header.pages" :key="page.id">
-        <a :href="'/' + page.slug">{{ page.title }}</a>
-
-        <!-- Level 2 Dropdown -->
-        <ul class="dropdown level-2" v-if="page.children && page.children.length && header.menu_type === 'dropdown'">
-          <li class="page-item level-2" v-for="child in page.children" :key="child.id">
-            <a :href="'/' + child.slug">{{ child.title }}</a>
-
-            <!-- Level 3 Dropdown -->
-            <ul class="dropdown level-3" v-if="child.children && child.children.length">
-              <li class="page-item level-3" v-for="childo in child.children" :key="childo.id">
-                <a :href="'/' + childo.slug">{{ childo.title }}</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-    </ul>
-    <div class="widgets">
-      <BasketIcon v-if="this.$page.url !== '/basket' && $page.props.cms.products" />
-      <DropdownNav :pages="header.menu_type === 'dropdown' ? header.pages : header.hamburger_pages"/>
+    <div class="nav-inner">
+      <a class="logo" :href="link" v-if="logo">
+        <img :src="'/' + logo.image_path" :alt="logo.image_alt">
+      </a>
+      <ul class="page-list navigation-secondary">
+        <li class="page-item level-1" v-for="page in header.pages" :key="page.id">
+          <a :href="'/' + page.slug">{{ page.title }}</a>
+  
+          <!-- Level 2 Dropdown -->
+          <ul class="dropdown level-2" v-if="page.children && page.children.length && header.menu_type === 'dropdown'">
+            <li class="page-item level-2" v-for="child in page.children" :key="child.id">
+              <a :href="'/' + child.slug">{{ child.title }}</a>
+  
+              <!-- Level 3 Dropdown -->
+              <ul class="dropdown level-3" v-if="child.children && child.children.length">
+                <li class="page-item level-3" v-for="childo in child.children" :key="childo.id">
+                  <a :href="'/' + childo.slug">{{ childo.title }}</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <div class="widgets">
+        <BasketIcon v-if="this.$page.url !== '/basket' && $page.props.cms.products" />
+        <DropdownNav :pages="header.menu_type === 'dropdown' ? header.pages : header.hamburger_pages"/>
+      </div>
     </div>
   </nav>
   
