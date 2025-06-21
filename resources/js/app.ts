@@ -47,6 +47,11 @@ createInertiaApp({
         
         const cartStore = useCartStore();
         cartStore.initCart();
+
+        app.config.globalProperties.$getImageUrl = (path: string) => {
+            const prefix = import.meta.env.DEV ? '/' : '/storage/';
+            return prefix + path;
+        };
         
         app.config.globalProperties.$appName = appName;  
         app.mount(el);

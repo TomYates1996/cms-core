@@ -16,7 +16,7 @@
         </div>
         <div v-if="showImageGrid" id="image-grid" class="image-grid" role="region" aria-label="Image selection">
             <img v-for="image in images" :key="image.id" class="new-slide-img-option"
-            @click="addImageToSlide(image)" :src="'/' + image.image_path"
+            @click="addImageToSlide(image)" :src="$getImageUrl(image.image_path)"
             :alt="image.image_alt || 'Slide image option'" role="button" tabindex="0" />
             <NewImage @refreshImages="getImages()" />
         </div>
