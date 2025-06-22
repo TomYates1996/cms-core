@@ -129,6 +129,12 @@ html {
         }
     }
     #app {
+        .nav {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+        }
         .login-page {
             h1 {
                 font-size: 1.75rem;
@@ -477,6 +483,7 @@ html {
 
 .nav .widgets {
     grid-column: 2;
+    margin-left: auto;
 }
 .dark {
     .page-left.detail {
@@ -503,7 +510,7 @@ html {
 .edit-content-page {
     .page-right {
         width: 100% !important;
-        margin-bottom: 130px;
+        padding-bottom: 130px;
     }
     div.page-left.detail {
         position: fixed;
@@ -711,7 +718,9 @@ html {
 }
 
 .nav-inner {
-    grid-column: 2;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
 }
 
 .dark .cms #newBlogPostModal {
