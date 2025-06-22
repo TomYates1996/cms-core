@@ -18,7 +18,8 @@
             <img v-for="image in images" :key="image.id" class="new-slide-img-option"
             @click="addImageToSlide(image)" :src="'/storage/' + image.image_path"
             :alt="image.image_alt || 'Slide image option'" role="button" tabindex="0" />
-            <NewImage @refreshImages="getImages()" />
+            <button @click="showNewImage = !showNewImage" class="toggle-new-img" aria-label="New image"><font-awesome-icon :icon="['fas', 'plus']" /></button>
+            <NewImage v-if="showNewImage" @refreshImages="getImages()"/>
         </div>
         <div v-if="imagePreview" class="image-preview form-field" role="region" aria-label="Selected image preview">
         <p class="sr-only">Preview Image</p>
@@ -97,8 +98,8 @@
       <button type="submit" class="cms-btn-default" tabindex="5" :disabled="form.processing" :aria-busy="form.processing">
         <LoaderCircle v-if="form.processing" class="h-4 w-4 animate-spin" /> Save Blog
       </button>
-      <button type="button" class="cms-btn-default" tabindex="6" :disabled="form.processing" @click.prevent="cancelNew()" >
-        Cancel
+      <button type="button" class="cms-btn-default new-layout" tabindex="6" :disabled="form.processing" @click.prevent="showNewImage ? showNewImage = !showNewImage : cancelNew()" >
+        {{ showNewImage ? 'Cancel Image' : 'Cancel'}}
       </button>
     </fieldset>
   </form>
@@ -135,6 +136,7 @@ export default {
       images: [],
       showImageGrid: false,
       showExtraSettings: false,
+      showNewImage: false,
     }
   },
   created() {
