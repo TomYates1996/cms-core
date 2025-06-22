@@ -13,7 +13,7 @@
             <img v-for="(image, index) in images" :key="image.id" class="new-slide-img-option" @click="addImageToSlide(image, index)" :src="'/storage/' + image.image_path" :alt="'Select ' + image.name" role="gridcell" />
             <button @click="showNewImage = !showNewImage" class="toggle-new-img" aria-label="New image"><font-awesome-icon :icon="['fas', 'plus']" /></button>
             <NewImage v-if="showNewImage" @refreshImages="getImages" />
-            <button class="cancel-new-image new-layout" v-if="showNewImage">Cancel Image</button>
+            <button class="cancel-new-image new-layout" v-if="showNewImage" @click="showNewImage = false">Cancel Image</button>
           </div>
         </div>
         <div class="form-slide-link form-field">
