@@ -1,5 +1,5 @@
 <template>
-  <form class="form new-image edit-page-info image-edit @submit.prevent="updateImage()" aria-labelledby="edit-image-title">
+  <form class="form new-image edit-page-info image-edit" @submit.prevent="updateImage()" aria-labelledby="edit-image-title">
     <fieldset class="form-inner">
       <legend id="edit-image-title" class="form-title">Edit Image</legend>
 
