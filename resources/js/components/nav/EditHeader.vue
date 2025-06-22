@@ -11,7 +11,9 @@
           <div v-if="showImageGrid" class="image-grid" role="grid" aria-labelledby="image-grid-label">
             <span id="image-grid-label" class="sr-only">Select an image</span>
             <img v-for="(image, index) in images" :key="image.id" class="new-slide-img-option" @click="addImageToSlide(image, index)" :src="'/storage/' + image.image_path" :alt="'Select ' + image.name" role="gridcell" />
-            <NewImage @refreshImages="getImages" />
+            <button @click="showNewImage = !showNewImage" class="toggle-new-img" aria-label="New image"><font-awesome-icon :icon="['fas', 'plus']" /></button>
+            <NewImage v-if="showNewImage" @refreshImages="getImages" />
+            <button class="cancel-new-image new-layout" v-if="showNewImage">Cancel Image</button>
           </div>
         </div>
         <div class="form-slide-link form-field">
@@ -60,17 +62,20 @@ import NewImage from '../cms/slides/images/NewImage.vue';
     data() {
         return {
             showImageGrid: false,
+            showNewImage: false,
         }
     },
     methods: {
         getImages() {
-            this.$emit('getImages')
+            this.showNewImage = true;
+            this.$emit('getImages');
         },
         imageList() {
             this.getImages();
             this.showImageGrid = true;
         },
         addImageToSlide(image, index) {
+            this.showNewImage = false;
             this.header.logo = this.images[index];
             this.showImageGrid = false;
         },
