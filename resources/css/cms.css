@@ -684,6 +684,36 @@ html {
     }
 }
 
+.cms {
+    .new-layout-info {
+        .new-layout {
+            width: 100%;
+            border-left:none;
+            position: fixed;
+            bottom: 0px;
+            left: 0px;
+            padding:20px;
+            background-color: var(--cms-tertiary);
+            color: var(--white);
+            font-weight: 600;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap:3px;
+            transition:all 0.25s ease;
+            border-radius:0px;
+            border: 1px solid var(--cms-black);
+            border-bottom:none;
+            z-index: 15;
+        }
+    }
+}
+
+.nav-inner {
+    grid-column: 2;
+}
+
 .dark .cms #newBlogPostModal {
     .form.new-image {
         background-color: var(--cms-dark-grey);
