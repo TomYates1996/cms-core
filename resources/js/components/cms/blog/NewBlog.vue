@@ -184,11 +184,10 @@ export default {
         }
       },
         getImages() {
+            this.showNewImage = false;
             axios.get('/api/images/all')
             .then((response) => {
                 this.images = response.data.images; 
-                console.log(this.images);
-                
             })
         },
         imageList() {
