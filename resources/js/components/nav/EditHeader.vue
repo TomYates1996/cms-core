@@ -10,7 +10,7 @@
           <button type="button" @click="imageList()" class="cms-btn-default add-img" aria-label="Select a logo image">Logo</button>
           <div v-if="showImageGrid" class="image-grid" role="grid" aria-labelledby="image-grid-label">
             <span id="image-grid-label" class="sr-only">Select an image</span>
-            <img v-for="(image, index) in images" :key="image.id" class="new-slide-img-option" @click="addImageToSlide(image, index)" :src="'/' + image.image_path" :alt="'Select ' + image.name" role="gridcell" />
+            <img v-for="(image, index) in images" :key="image.id" class="new-slide-img-option" @click="addImageToSlide(image, index)" :src="'/storage/' + image.image_path" :alt="'Select ' + image.name" role="gridcell" />
             <NewImage @refreshImages="getImages" />
           </div>
         </div>

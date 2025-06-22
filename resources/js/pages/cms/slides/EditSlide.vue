@@ -32,7 +32,7 @@
             v-for="image in images"
             :key="image.id"
             class="new-slide-img-option"
-            :src="'/' + image.image_path"
+            :src="'/storage/' + image.image_path"
             alt="Slide image option"
             role="button"
             tabindex="0"
@@ -140,7 +140,7 @@ export default {
         addImageToSlide(image) {
             this.form.image_id = image.id;
             this.showImageGrid = false;
-            this.slideImage = '/' + image.image_path;
+            this.slideImage = '/storage/' + image.image_path;
             this.form.image_id = image.id;
         },
     },

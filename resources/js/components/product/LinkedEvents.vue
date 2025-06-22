@@ -41,7 +41,7 @@ export default {
             const slide = {
                 link : '/event/' + event.slug,
                 image: {
-                    image_path: '/' + event.thumbnail_image,
+                    image_path: '/storage/' + event.thumbnail_image,
                     image_alt: event.title,
                 },
                 startDate: event.start_datetime,

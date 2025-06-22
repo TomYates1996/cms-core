@@ -41,7 +41,7 @@ export default {
             const slide = {
                 link : '/listing/' + listing.slug,
                 image: {
-                    image_path: '/' + listing.thumbnail_image,
+                    image_path: '/storage/' + listing.thumbnail_image,
                     image_alt: listing.title,
                 },
             };

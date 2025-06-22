@@ -16,7 +16,7 @@
         </div>
         <div v-if="showImageGrid" id="image-grid" class="image-grid" role="region" aria-label="Image selection">
             <img v-for="image in images" :key="image.id" class="new-slide-img-option"
-            @click="addImageToSlide(image)" :src="'/' + image.image_path"
+            @click="addImageToSlide(image)" :src="'/storage/' + image.image_path"
             :alt="image.image_alt || 'Slide image option'" role="button" tabindex="0" />
             <NewImage @refreshImages="getImages()" />
         </div>
@@ -196,7 +196,7 @@ export default {
         addImageToSlide(image) {
             this.form.image_id = image.id;
             this.form.image_path = image.image_path;
-            this.imagePreview = '/' + image.image_path;
+            this.imagePreview = '/storage/' + image.image_path;
             this.showImageGrid = false;
         },
         uploadImage(event) {

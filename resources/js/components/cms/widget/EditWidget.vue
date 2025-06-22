@@ -81,7 +81,7 @@
             <li v-if="initialSlides.length < 1">No slides</li>
             <li v-for="slide in initialSlides" :key="slide.id" class="slide-item" :aria-label="'Slide: ' + slide.title">
               <article class="slide-card">
-                <img v-if="slide.image" class="slide-list-img" :src="'/' + slide.image.image_path" :alt="slide.image.image_alt || ('Image for ' + slide.title)" />
+                <img v-if="slide.image" class="slide-list-img" :src="'/storage/' + slide.image.image_path" :alt="slide.image.image_alt || ('Image for ' + slide.title)" />
                 <div class="slide-info">
                   <h3 class="slide-title">{{ slide.title }}</h3>
                   <div class="slide-actions">
@@ -141,7 +141,7 @@
      <ul class="slide-list">
         <li v-for="slide in filteredSlides" :key="slide.id" class="slide-item">
           <article class="slide-card">
-                <img v-if="slide.image" class="slide-list-img" :src="'/' + slide.image.image_path" :alt="slide.image.image_alt || ('Image for ' + slide.title)" />
+                <img v-if="slide.image" class="slide-list-img" :src="'/storage/' + slide.image.image_path" :alt="slide.image.image_alt || ('Image for ' + slide.title)" />
                 <div class="slide-info">
                   <h3 class="slide-title">{{ slide.title }}</h3>
                   <div class="slide-actions">

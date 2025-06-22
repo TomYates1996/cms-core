@@ -100,7 +100,7 @@ export default {
                 this.slides.forEach(slide => {
                     if (slide.image_id) {
                         let image = this.images.find(image => image.id === slide.image_id)
-                        slide.image_path = '/' + image.image_path;
+                        slide.image_path = '/storage/' + image.image_path;
                         slide.image_alt = image.image_alt;
                     }
                 })

@@ -7,7 +7,7 @@
             </div>
             <div v-if="!showNew && !showEdit" class="image-grid">
                 <div class="image-item" v-for="image in images" :key="image.id">
-                    <img class="" @click="editImage(image)" :src="'/' + image.image_path" :alt="image.image_alt">
+                    <img class="" @click="editImage(image)" :src="'/storage/' + image.image_path" :alt="image.image_alt">
                     <button class="edit-image" @click="editImage(image)" aria-label="Edit item"><font-awesome-icon :icon="['fas', 'pen-to-square']" /></button>
                 </div>
             </div>

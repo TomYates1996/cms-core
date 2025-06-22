@@ -80,7 +80,7 @@
             <li v-if="slides.filter(slide => slide.selected).length < 1">No slides</li>
             <li v-for="slide in slides.filter(slide => slide.selected)" :key="slide.id" class="slide-item" :aria-label="'Slide: ' + slide.title">
               <article class="slide-card">
-                <img v-if="slide.image" class="slide-list-img" :src="'/' + slide.image.image_path" :alt="slide.image.image_alt || ('Image for ' + slide.title)" />
+                <img v-if="slide.image" class="slide-list-img" :src="'/storage/' + slide.image.image_path" :alt="slide.image.image_alt || ('Image for ' + slide.title)" />
                 <div class="slide-info">
                   <h3 class="slide-title">{{ slide.title }}</h3>
                   <div class="slide-actions">
@@ -144,7 +144,7 @@
               <!-- <button type="button" class="edit-slide" @click="editSlide(slide)" :aria-label="'Edit slide ' + slide.title" title="Edit Slide"><font-awesome-icon :icon="['fas', 'pen-to-square']" /></button> -->
               <button type="button" class="add-slide-btn" @click.prevent="addSlide(slide)" :aria-label="'Add slide ' + slide.title + ' from selection'" title="Add Slide"><font-awesome-icon :icon=" isChosen(slide) ? ['fas', 'minus'] : ['fas', 'plus'] " /> </button>
             </div>
-                <img v-if="slide.image" class="slide-list-img" :src="'/' + slide.image.image_path" :alt="slide.image.image_alt || ('Image for ' + slide.title)" />
+                <img v-if="slide.image" class="slide-list-img" :src="'/storage/' + slide.image.image_path" :alt="slide.image.image_alt || ('Image for ' + slide.title)" />
                 <div class="slide-info">
                   <h3 class="slide-title">{{ slide.title }}</h3>
                 </div>

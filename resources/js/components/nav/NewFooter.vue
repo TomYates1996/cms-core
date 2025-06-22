@@ -33,7 +33,7 @@
                 @click="addImageToSlide(image, index)"
                 v-for="(image, index) in images"
                 :key="image.id"
-                :src="'/' + image.image_path"
+                :src="'/storage/' + image.image_path"
                 :alt="'Select ' + image.name"
                 role="gridcell"
               />

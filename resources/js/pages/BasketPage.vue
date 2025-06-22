@@ -110,7 +110,7 @@ export default {
         formatImageToFit(image) {
             const slide = {
                 image: {
-                image_path: '/' + image,
+                image_path: '/storage/' + image,
                 },
             };
             return slide;

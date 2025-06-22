@@ -3,7 +3,7 @@
         <h2>Edit Footer</h2>
         <button @click="imageList()" class="add-img">Logo</button>
         <div v-if="showImageGrid" class="image-grid">
-            <img class="new-slide-img-option" @click="addImageToSlide(image, index)" v-for="(image, index) in images" :key="image.id" :src="'/' + image.image_path" alt="">
+            <img class="new-slide-img-option" @click="addImageToSlide(image, index)" v-for="(image, index) in images" :key="image.id" :src="'/storage/' + image.image_path" alt="">
             <NewImage @refreshImages="getImages()"/>
         </div>
         <!-- Section Select -->

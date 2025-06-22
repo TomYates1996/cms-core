@@ -75,7 +75,7 @@
 
         <div v-if="showImageGrid" id="imageGrid" class="image-grid" aria-label="Select an image for the slide">
         <img v-for="image in images" :key="image.id" class="new-slide-img-option"
-            :src="'/' + image.image_path" alt="Image option" role="button" tabindex="0"
+            :src="'/storage/' + image.image_path" alt="Image option" role="button" tabindex="0"
             @click.prevent="addImageToSlide(image)" />
         <NewImage @refreshImages="refreshImages()" />
         </div>

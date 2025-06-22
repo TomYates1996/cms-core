@@ -29,7 +29,7 @@
           :key="image.id"
           class="new-slide-img-option"
           @click="addImageToSlide(image)"
-          :src="'/' + image.image_path"
+          :src="'/storage/' + image.image_path"
           :alt="image.image_alt || 'Slide image option'"
         />
         <NewImage @refreshImages="refreshImages" />
@@ -102,7 +102,7 @@
       },
       addImageToSlide(image) {
         this.form.image_id = image.id;
-        this.selectedImagePath = '/' + image.image_path;
+        this.selectedImagePath = '/storage/' + image.image_path;
         this.showImageGrid = false;
       },
       createSlide() {
