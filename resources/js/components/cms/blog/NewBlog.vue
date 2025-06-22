@@ -98,8 +98,11 @@
       <button type="submit" class="cms-btn-default" tabindex="5" :disabled="form.processing" :aria-busy="form.processing">
         <LoaderCircle v-if="form.processing" class="h-4 w-4 animate-spin" /> Save Blog
       </button>
-      <button type="button" class="cms-btn-default new-layout" tabindex="6" :disabled="form.processing" @click.prevent="showNewImage ? showNewImage = !showNewImage : cancelNew()" >
+      <button v-if="!showImageGrid" type="button" class="cms-btn-default new-layout" tabindex="6" :disabled="form.processing" @click.prevent="showNewImage ? showNewImage = !showNewImage : cancelNew()" >
         {{ showNewImage ? 'Cancel Image' : 'Cancel'}}
+      </button>
+      <button v-if="showImageGrid" type="button" class="cms-btn-default new-layout" tabindex="7" :disabled="form.processing" @click.prevent="showImageGrid = false" >
+        Cancel Select
       </button>
     </fieldset>
   </form>
