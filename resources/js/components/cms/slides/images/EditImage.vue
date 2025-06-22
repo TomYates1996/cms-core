@@ -47,7 +47,7 @@
           <img :src="imagePreview" alt="New image preview" class="preview-image" />
         </div>
         <div v-else-if="form.image_path" class="image-preview-con">
-          <img :src="'/' + form.image_path" alt="Current image" class="preview-image" />
+          <img :src="'/storage/' + form.image_path" alt="Current image" class="preview-image" />
         </div>
       </div>
 
