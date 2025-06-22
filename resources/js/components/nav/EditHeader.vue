@@ -67,7 +67,7 @@ import NewImage from '../cms/slides/images/NewImage.vue';
     },
     methods: {
         getImages() {
-            this.showNewImage = true;
+            this.showNewImage = false;
             this.$emit('getImages');
         },
         imageList() {
