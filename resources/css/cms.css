@@ -485,6 +485,14 @@ html {
     grid-column: 2;
     margin-left: auto;
 }
+.nav .logo {
+    max-width: 100px;
+    display: flex;
+    img {
+        object-fit: cover;
+        width: 100%;
+    }
+}
 .dark {
     .page-left.detail {
         .expanding {

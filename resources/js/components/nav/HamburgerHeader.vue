@@ -2,7 +2,7 @@
   <nav class="nav" role="navigation" :class="'menu-'+header.menu_type">
     <div class="nav-inner">
       <a class="logo" :href="link" v-if="logo">
-        <img :src="'/' + logo.image_path" :alt="logo.image_alt">
+        <img :src="'/storage/' + logo.image_path" :alt="logo.image_alt">
       </a>
       <ul class="page-list navigation-secondary">
         <li class="page-item level-1" v-for="page in header.pages" :key="page.id">
