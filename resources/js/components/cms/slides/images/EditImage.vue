@@ -1,5 +1,5 @@
 <template>
-  <form class="form new-image edit-page-info" @submit.prevent="updateImage()" aria-labelledby="edit-image-title">
+  <form class="form new-image edit-page-info image-edit @submit.prevent="updateImage()" aria-labelledby="edit-image-title">
     <fieldset class="form-inner">
       <legend id="edit-image-title" class="form-title">Edit Image</legend>
 
@@ -29,7 +29,6 @@
       </div>
 
       <div class="form-field">
-        <label for="photo">Image Upload</label>
         <input
           id="photo"
           name="photo"
@@ -38,7 +37,9 @@
           accept="image/*"
           @change="uploadImage($event)"
           class="hidden-file-input"
+          aria-label="Image Upload"
         />
+
         <label for="photo" class="upload-label" tabindex="0">Choose Image</label>
         <span v-if="form.image && form.image.name" class="file-name">{{ form.image.name }}</span>
 
@@ -72,15 +73,6 @@
         >
           <LoaderCircle v-if="form.processing" class="h-4 w-4 animate-spin" />
           <span v-else>Update Image</span>
-        </button>
-
-        <button
-          type="button"
-          class="cms-btn-default cancel-new-image"
-          @click.prevent="closeEditImage"
-          aria-label="Cancel Edit Image"
-        >
-          Cancel
         </button>
       </div>
     </fieldset>

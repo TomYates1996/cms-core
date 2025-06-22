@@ -13,14 +13,18 @@
             </div>
 
             <div class="form-field">
-                <label for="photo">Image Upload</label>
                 <input
-                    id="photo"
-                    ref="photo"
-                    type="file"
-                    accept="image/*"
-                    @input="uploadImage($event);"
+                id="photo"
+                name="photo"
+                type="file"
+                ref="photo"
+                accept="image/*"
+                @change="uploadImage($event)"
+                class="hidden-file-input"
+                aria-label="Image Upload"
                 />
+
+                <label for="photo" class="upload-label" tabindex="0">Choose Image</label>
                 <div v-if="imagePreview" class="image-preview-con" aria-live="polite">
                     <img :src="imagePreview" alt="Image Preview" class="preview-image" />
                 </div>
@@ -47,14 +51,6 @@
                 >
                     <LoaderCircle v-if="form.processing" class="h-4 w-4 animate-spin" />
                     <span v-else>Create Image</span>
-                </button>
-                <button
-                    type="button"
-                    class="cms-btn-default cancel-new-image"
-                    @click="closeNewImage()"
-                    aria-label="Cancel Image Upload"
-                >
-                    Cancel
                 </button>
             </div>
         </fieldset>
