@@ -413,6 +413,9 @@ html {
     }
 
     .cms {
+        .page {
+            padding-bottom: 44px;
+        }
     .crm-header-wrap button {
         width: 100%;
         border-left: none;
@@ -432,6 +435,7 @@ html {
         border-radius: 0px;
         border: 1px solid var(--cms-black);
         border-bottom: none;
+        z-index: 15;
         @media (hover:hover) {
             &&:hover{
                 background-color: var(--cms-secondary);

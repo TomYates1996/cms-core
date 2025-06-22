@@ -3,7 +3,8 @@
         <div class="page-left">
             <div class="crm-header-wrap">
                 <h1 class="crm-header">Images</h1>
-                <button @click="showNew = !showNew">{{ showNew ? 'Cancel' : 'New Image' }}</button>
+                <button v-if="!showEdit" @click="showNew = !showNew">{{ showNew ? 'Cancel' : 'New Image' }}</button>
+                <button v-if="showEdit" @click="showEdit = !showEdit">Cancel</button>
             </div>
             <div v-if="!showNew && !showEdit" class="image-grid">
                 <div class="image-item" v-for="image in images" :key="image.id">

@@ -1,5 +1,5 @@
 <template>
-  <form class="form new-image edit-page-info" @submit.prevent="updateImage()" aria-labelledby="edit-image-title">
+  <form class="form new-image edit-page-info image-edit" @submit.prevent="updateImage()" aria-labelledby="edit-image-title">
     <fieldset class="form-inner">
       <legend id="edit-image-title" class="form-title">Edit Image</legend>
 
@@ -28,8 +28,7 @@
         />
       </div>
 
-      <div class="form-field">
-        <label for="photo">Image Upload</label>
+      <div class="form-field image-field">
         <input
           id="photo"
           name="photo"
@@ -40,8 +39,6 @@
           class="hidden-file-input"
         />
         <label for="photo" class="upload-label" tabindex="0">Choose Image</label>
-        <span v-if="form.image && form.image.name" class="file-name">{{ form.image.name }}</span>
-
         <div v-if="imagePreview" class="image-preview-con" aria-live="polite">
           <img :src="imagePreview" alt="New image preview" class="preview-image" />
         </div>
