@@ -10,8 +10,10 @@
             <div class="right-upper">
                 <div v-if="footer.widgets" class="widgets">
                     <div class="cta" v-for="widget in footer.widgets" :key="widget.id">
-                        <h3>{{ widget.title }}</h3>
-                        <p>{{ widget.description }}</p>
+                        <a :href="widget.link">
+                            <h3>{{ widget.title }}</h3>
+                            <p>{{ widget.description }}</p>
+                        </a>
                     </div>
                 </div>
                 <ul class="social-links" v-if="footer.social_media">

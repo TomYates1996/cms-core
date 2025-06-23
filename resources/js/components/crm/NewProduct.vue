@@ -126,6 +126,7 @@
     <button @click.prevent="addVariant">Add Variant</button>
     <br /><br />
     <button type="submit">Create Product</button>
+    <button class="cancel-product" @click.prevent="this.$emit('cancel-product')">Cancel</button>
   </form>
 </template>
 

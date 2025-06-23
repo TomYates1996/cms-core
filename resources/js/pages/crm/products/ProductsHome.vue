@@ -2,7 +2,7 @@
     <section class="crm-page page-wrap">
         <main class="page-left" role="main" aria-label="Products management">
             
-            <NewProduct :products="products" :variantTypes="variantTypes" v-if="showNewListing" @cancelNew="showNewListing = false" id="newProductForm" />
+            <NewProduct @cancel-product="showNewListing = !showNewListing" :products="products" :variantTypes="variantTypes" v-if="showNewListing" @cancelNew="showNewListing = false" id="newProductForm" />
             <section v-else class="list-wrap product-list-wrap" aria-labelledby="productsHeading">
                 <div class="crm-header-wrap">
                     <h1 id="productsHeading" class="crm-header section-title">Products</h1>

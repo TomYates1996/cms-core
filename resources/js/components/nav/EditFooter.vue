@@ -61,6 +61,9 @@
                     <label for="description">Description: 
                         <input type="text" id="description" v-model="newCTA.description">
                     </label>
+                    <label for="link">Link: 
+                        <input type="url" id="link" v-model="newCTA.link">
+                    </label>
                     <button type="submit" class="cms-btn-default" aria-label="Add CTA">Save CTA</button>
                     <button type="button" @click="cancelAdd()" class="cms-btn-default cancel-update-slide" aria-label="Cancel Adding CTA">Cancel</button>
                 </fieldset>
