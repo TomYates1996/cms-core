@@ -14,7 +14,8 @@
             <button @click="showNewImage = !showNewImage" class="toggle-new-img" aria-label="New image"><font-awesome-icon :icon="['fas', 'plus']" /></button>
             <NewImage v-if="showNewImage" @refreshImages="getImages" />
             <button class="cancel-new-image new-layout" v-if="showNewImage" @click="showNewImage = false">Cancel Image</button>
-          </div>
+        </div>
+        <button class="cancel-new-image cancel-image-grid new-layout" v-if="showImageGrid && !showNewImage" @click="showImageGrid = false">Cancel</button>
         </div>
         <div class="form-slide-link form-field">
             <label for="menu_type">Menu Type</label>
