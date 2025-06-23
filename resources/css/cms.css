@@ -70,7 +70,8 @@ html.dark {
 }
 
 html {
-    }
+    background-color: var(--cms-white);
+        }
     html.dark {
         background-color: var(--cms-dark-grey);
     }
