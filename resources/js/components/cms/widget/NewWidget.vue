@@ -6,8 +6,8 @@
   </div>
   <div v-if="newTab" class="tab-inners">
     <div v-if="showSlideList" class="slides-buttons" role="tablist" aria-label="Tabs for toggling between saved and new widgets">
-      <button class="cms-btn-default" @click.prevent="addSlides()" role="button">Confirm add</button>
-      <button class="cms-btn-default" @click.prevent="cancelSlides()" role="button">Cancel</button>
+      <button class="cms-btn-default" @click.prevent="addSlides()" role="button">Confirm Choice</button>
+      <button class="cms-btn-default" @click.prevent="cancelSlides()" role="button">Back</button>
     </div>
     <form v-if="!showSlideList" class="form form-new-widget" aria-labelledby="select-widget-title">
       <fieldset class="form-inner">
@@ -51,7 +51,7 @@
         </div>
          <div v-if="newWidget.type &&  widgetOptions.find(option => option.variant === newWidget.type.variant)?.hasSettings">
           <label><strong>Feed Type:</strong></label>
-          <div style="margin-top: 8px;">
+          <div class="feed-options-list" style="margin-top: 8px;">
             <label style="margin-right: 15px;">
               <input type="radio" value="slides" v-model="newWidget.feed_type" />
               Slides

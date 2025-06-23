@@ -59,7 +59,7 @@
                         <input type="text" id="description" v-model="newCTA.description">
                     </label>
                     <button type="submit" class="cms-btn-default" aria-label="Add CTA">Save CTA</button>
-                    <button type="button" @click="cancelAdd()" class="cms-btn-default cancel-update-slide" aria-label="Cancel Adding CTA">Cancel</button>
+                    <button class="cancel-update-slide footer-cancel-edit" type="button" @click="cancelAdd()" class="cms-btn-default cancel-update-slide" aria-label="Cancel Adding CTA">Cancel</button>
                 </fieldset>
             </form>
         </div>
