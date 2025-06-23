@@ -1087,3 +1087,136 @@ html.dark {
 }
 
 
+
+.cms .crm-header-wrap .double-btn {
+    display: flex;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    button {
+        position: relative;
+    }
+}
+
+.edit-content-page {
+    .edit-footer-wrap {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .footer-cta {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    .current-ctas {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding-bottom: 10px;
+        .cta-line {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+    } 
+}
+
+#app {
+    .layout.cms {
+        .main-content {
+            .crm-page #newProductForm {
+                .form-field {
+                    display: flex;
+                    flex-direction: column;
+                }
+                .item-block {
+                    gap: 5px;
+                    display: flex;
+                    flex-direction: column;
+                    div {
+                        display: flex;
+                        flex-direction: column;
+                    }
+                }
+                padding-bottom: 80px;
+                .cancel-product {
+                    position: fixed;
+                    bottom: 0px;
+                    left: 0px;
+                    width: 100%;
+                    display: flex;
+                    background-color: var(--cms-tertiary);
+                    color: var(--cms-white);
+                    justify-content: center;
+                    padding: 10px;
+                    width: 100%;
+                    border-left: none;
+                    position: fixed;
+                    bottom: 0px;
+                    left: 0px;
+                    padding: 20px;
+                    background-color: var(--cms-tertiary);
+                    color: var(--white);
+                    font-weight: 600;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 3px;
+                    transition: all 0.25s ease;
+                    border-radius: 0px;
+                    border: 1px solid var(--cms-black);
+                    border-bottom: none;
+                    z-index: 15;
+                }
+            }
+            .page-wrap {
+                .page-left {
+                    .new-crm-item {
+                        .form-inner {
+                            .cms-btn-default:last-of-type {
+                                position: fixed;
+                                bottom: 0px;
+                                left: 0px;
+                                width: 100%;
+                                display: flex;
+                                background-color: var(--cms-tertiary);
+                                color: var(--cms-white);
+                                justify-content: center;
+                                padding: 10px;
+                                width: 100%;
+                                border-left: none;
+                                position: fixed;
+                                bottom: 0px;
+                                left: 0px;
+                                padding: 20px;
+                                background-color: var(--cms-tertiary);
+                                color: var(--white);
+                                font-weight: 600;
+                                display: flex;
+                                flex-direction: row;
+                                align-items: center;
+                                justify-content: center;
+                                gap: 3px;
+                                transition: all 0.25s ease;
+                                border-radius: 0px;
+                                border: 1px solid var(--cms-black);
+                                border-bottom: none;
+                                z-index: 15;
+                            }
+                            .prices-section {
+                                .cms-btn-default {
+                                    position: static;
+                                    padding: 4px;
+                                    border-bottom: 1px solid var(--cms-black);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
