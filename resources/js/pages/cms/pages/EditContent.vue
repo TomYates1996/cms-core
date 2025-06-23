@@ -81,7 +81,7 @@
               <NewWidget v-if="showModal.new.widgets" :pages="pages" @deleteSaved="deleteSavedElement" :savedWidgets="localSaved.widgets" :slides="slides" @addWidget="addWidget" @cancelAdd="cancelAdd('widgets')" :page="page" />
               <EditWidget v-if="showModal.edit.widgets" :pages="pages" :widget="itemInfo" :slides="slides" @saveEdit="saveEdit" @cancelEdit="cancelEdit('widgets')"/>
               <EditHeader v-if="showModal.edit.header" :header="itemInfo" :images="images" @getImages="getImages()" @saveEdit="saveHeaderEdit()" @cancelEdit="cancelEdit('header')"/>
-              <EditFooter v-if="showModal.edit.footer" :footer="itemInfo" :pages="pages" :socialMedia="localContent.socialMedia" @created="addSocialLink" :images="images" @saveEdit="saveFooter()" @cancelEdit="cancelEdit('footer')"/>
+              <EditFooter v-if="showModal.edit.footer" :footer="itemInfo" :pages="pages" :socialMedia="localContent.socialMedia" @created="addSocialLink" :images="images" @saveEdit="saveFooter()" @cancelEdit="cancelEdit('footer')" @getImages="getImages()"/>
               <div v-if="!anyTrue" class="widget-container">
                 <component v-for="widget in localContent.widgets" :key="widget.id" :is="widget.variant" :widget="widget"/>
               </div>

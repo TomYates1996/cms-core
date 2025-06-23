@@ -4,8 +4,11 @@
         <button @click="imageList()" class="add-img">Logo</button>
         <div v-if="showImageGrid" class="image-grid">
             <img class="new-slide-img-option" @click="addImageToSlide(image, index)" v-for="(image, index) in images" :key="image.id" :src="'/storage/' + image.image_path" alt="">
-            <NewImage @refreshImages="getImages()"/>
+            <button @click="showNewImage = !showNewImage" class="toggle-new-img" aria-label="New image"><font-awesome-icon :icon="['fas', 'plus']" /></button>
+            <NewImage v-if="showNewImage" @refreshImages="getImages()"/>
+            <button class="cancel-new-image new-layout" v-if="showNewImage" @click="showNewImage = false">Cancel New Image</button>
         </div>
+        <button class="cancel-new-image cancel-image-grid new-layout" v-if="showImageGrid && !showNewImage" @click="showImageGrid = false">Back</button>
         <!-- Section Select -->
         <div class="form-slide-link form-field">
             <label for="footer-section">Section</label>
@@ -88,6 +91,7 @@ import axios from 'axios';
     data() {
         return {
             showImageGrid: false,
+            showNewImage: false,
             showAdd: false,
             showAddCTA: false,
             showEditCTA: false,
@@ -121,6 +125,7 @@ import axios from 'axios';
             //     description: this.newCTA.description,
         },
         getImages() {
+            this.showNewImage = false;
             this.$emit('getImages')
         },
         imageList() {
@@ -128,6 +133,7 @@ import axios from 'axios';
             this.showImageGrid = true;
         },
         addImageToSlide(image, index) {
+            this.showNewImage = false;
             this.footer.logo = this.images[index];
             this.showImageGrid = false;
         },
