@@ -3,12 +3,14 @@
         <div class="page-left">
             <div class="crm-header-wrap">
                 <h1 class="crm-header">Pages - {{ section }}</h1>
-                <button v-if="!showModal.newLink" @click="toggleNew()" :aria-expanded="showModal.new.toString()" :aria-controls="'newPageForm'">
-                    {{ showModal.new ? 'Cancel' : 'New Page' }}
-                </button>
-                <button v-if="!showModal.new" @click="toggleNewLink()" :aria-expanded="showModal.newLink.toString()" :aria-controls="'newPageLinkForm'">
-                    {{ showModal.newLink ? 'Cancel' : 'New Page Link' }}
-                </button>
+                <div class="double-btn">
+                    <button v-if="!showModal.newLink" @click="toggleNew()" :aria-expanded="showModal.new.toString()" :aria-controls="'newPageForm'">
+                        {{ showModal.new ? 'Cancel' : 'New Page' }}
+                    </button>
+                    <button v-if="!showModal.new" @click="toggleNewLink()" :aria-expanded="showModal.newLink.toString()" :aria-controls="'newPageLinkForm'">
+                        {{ showModal.newLink ? 'Cancel' : 'New Page Link' }}
+                    </button>
+                </div>
             </div>
             <table v-if="!showModal.edit.details && !showModal.new && !showModal.newLink" class="page-list" role="table" aria-label="Page List">
                 <thead>

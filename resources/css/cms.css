@@ -71,9 +71,11 @@ html.dark {
 
 html {
     background-color: var(--cms-white);
+    --background-colour: var(--cms-white);
         }
     html.dark {
         background-color: var(--cms-dark-grey);
+        --background-colour: var(--cms-dark-grey);
     }
     /* You can delete the above cms-background variables as they are added to the core cms file */
     .dark {
@@ -885,9 +887,6 @@ html {
         z-index: 15;
         z-index: 100;
     }
-    /* Delete this line */
-    --background-colour: #ffffff;
-    /* This one above */
     .cancel-update-slide {
         position: fixed;
         bottom: 0px;
