@@ -1,5 +1,5 @@
 <template>
-    <div class="edit-widget">
+    <div class="edit-widget edit-footer-wrap">
         <h2>Edit Footer</h2>
         <button @click="imageList()" class="add-img">Logo</button>
         <div v-if="showImageGrid" class="image-grid">
