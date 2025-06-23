@@ -36,7 +36,7 @@
         />
       </div>
   
-      <button type="submit">Submit</button>
+      <button class="cms-btn-default" type="submit">Save</button>
     </form>
   </template>
   

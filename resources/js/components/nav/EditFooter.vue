@@ -68,7 +68,7 @@
         </div>
   
         <button @click="saveEdit()">Save Changes</button>
-        <button @click="cancelEdit()" class="cms-btn-default cancel-update-slide">Cancel</button>
+        <button @click="showAdd ? showAdd = false : cancelEdit()" class="cms-btn-default cancel-update-slide">{{ showAdd ? 'Back' : 'Cancel' }}</button>
     </div>
 </template>
   
