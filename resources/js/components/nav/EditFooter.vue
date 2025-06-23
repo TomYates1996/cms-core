@@ -55,7 +55,7 @@
                     <button type="button" @click="cancelAdd()" class="cms-btn-default cancel-update-slide cancel-cta" aria-label="Cancel Editing CTA">Cancel</button>
                 </fieldset>
             </form>
-            <button class="cms-btn-default" @click.prevent="showAddCTA = !showAddCTA">{{ showAddCTA ? 'Cancel CTA' : 'Add CTA' }}</button>
+            <button v-if="!showEditCTA" class="cms-btn-default" @click.prevent="showAddCTA = !showAddCTA">{{ showAddCTA ? 'Cancel CTA' : 'Add CTA' }}</button>
             <form v-if="showAddCTA" @submit.prevent="addCTA()" class="edit-page-info form tab-inners" aria-labelledby="form-header">
                 <fieldset class="form-inner">
                     <legend id="form-header" class="form-title">Add a New CTA</legend>
@@ -173,6 +173,7 @@ import axios from 'axios';
             if (index !== -1) {
                 this.footer.widgets.splice(index, 1, { ...this.editCTA });
             }
+            this.showEditCTA = false;
         },
         removeCTA(ctaIndex) {
             this.footer.widgets.splice(ctaIndex, 1);
