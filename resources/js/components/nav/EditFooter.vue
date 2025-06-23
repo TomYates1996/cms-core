@@ -35,7 +35,7 @@
             <ul class="current-ctas">
                 <li class="cta-line" v-for="cta in footer.widgets" :key="cta.id">
                     <p>{{ cta.title }}</p>
-                    <button class="cms-btn-default" @click.prevent="toggleShowEditCTA(cta)">{{ showEditCTA ? 'Cancel CTA' : 'Edit CTA' }}</button>
+                    <button class="cms-btn-default" v-if="!showAddCTA" @click.prevent="toggleShowEditCTA(cta)">{{ showEditCTA ? 'Cancel Edit' : 'Edit CTA' }}</button>
                     <button class="delete-cta" @click.prevent="removeCTA(cta)"><font-awesome-icon :icon="['fas', 'trash']" /></button>
                 </li>
             </ul>
@@ -166,7 +166,7 @@ import axios from 'axios';
         },
         toggleShowEditCTA(cta) {
             this.editCTA = cta;
-            this.showEditCTA = true;
+            this.showEditCTA = !this.showEditCTA;
         },
         saveEditCTA() {
             const index = this.footer.widgets.findIndex(el => el.id === this.editCTA.id);
