@@ -22,9 +22,9 @@
           </Link>
       </div>
       <div class="expanding">
-        <button :class="['header-edit-sidebar-btn', { active: headerCmsVisble }]" @click="headerVisible()" v-if="!isBlog">Header</button>
+        <button :class="['header-edit-sidebar-btn', { active: headerCmsVisible }]" @click="headerVisible()" v-if="!isBlog">Header</button>
         <button :class="['widgets-edit-sidebar-btn', { active: widgetsCmsVisble }]" @click="widgetsVisible()">Widgets</button>
-        <button :class="['footer-edit-sidebar-btn', { active: footerCmsVisible }]" @click="footerVisible()" v-if="!isBlog">Footer</button>
+        <button :class="['footer-edit-sidebar-btn', { active: footerCmsVisble }]" @click="footerVisible()" v-if="!isBlog">Footer</button>
       </div>
       <div class="expanded-content">
         <div v-if="headerCmsVisible" class="sidebar-option sidebar-header">
