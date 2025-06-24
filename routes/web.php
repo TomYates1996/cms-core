@@ -36,6 +36,12 @@ Route::get('/resize/{path}', function ($path) {
     $width = request('w');
     $height = request('h');
 
+    $path = ltrim($path, '/');
+
+    if (str_starts_with($path, 'storage/')) {
+        $path = substr($path, strlen('storage/'));
+    }
+
     $storagePath = public_path('storage/' . $path);
 
     if (!file_exists($storagePath)) {
