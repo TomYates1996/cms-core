@@ -11,17 +11,20 @@
                     </button>
                 </div>
                 <ul class="blog-list crm-list">
-                <li v-for="blog in blogPosts" :key="blog.id" class="blog-list-item crm-list-item">
-                    <a :href="`/${$page.props.cms.blog_page}/post/${blog.slug}`">{{ blog.title }}</a>
-                    
-                    <button v-if="$page.props.auth.user" class="option" @click="deleteBlog(blog.id)" :aria-label="`Delete blog: ${blog.title}`" title="Delete blog">
-                    <font-awesome-icon :icon="['fas', 'trash-can']" />
-                    </button>
-                    
-                    <Link v-if="$page.props.auth.user" :href="`/cms/blog/edit-content/${blog.id}`" method="get" class="option" role="button" :aria-label="`Edit content for ${blog.title}`" title="Edit content">
-                    <font-awesome-icon :icon="['fas', 'pen-to-square']" />
-                    </Link>
-                </li>
+                    <li v-for="blog in blogPosts" :key="blog.id" class="blog-list-item crm-list-item">
+                        <a :href="`/${$page.props.cms.blog_page}/post/${blog.slug}`">{{ blog.title }}</a>
+                        
+                        <button v-if="$page.props.auth.user" class="option" @click="deleteBlog(blog.id)" :aria-label="`Delete blog: ${blog.title}`" title="Delete blog">
+                        <font-awesome-icon :icon="['fas', 'trash-can']" />
+                        </button>
+                        
+                        <Link v-if="$page.props.auth.user" :href="`/cms/blog/edit-content/${blog.id}`" method="get" class="option" role="button" :aria-label="`Edit content for ${blog.title}`" title="Edit content">
+                        <font-awesome-icon :icon="['fas', 'pen-to-square']" />
+                        </Link>
+                    </li>
+                    <li class="no-items" v-if="blogPosts.length < 1">
+                        <p>No Blogs</p>
+                    </li>
                 </ul>
             </div>
         </section>
