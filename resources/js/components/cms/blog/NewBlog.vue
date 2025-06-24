@@ -18,7 +18,7 @@
             <img v-for="image in images" :key="image.id" class="new-slide-img-option"
             @click="addImageToSlide(image)" :src="'/storage/' + image.image_path"
             :alt="image.image_alt || 'Slide image option'" role="button" tabindex="0" />
-            <button @click="showNewImage = !showNewImage" :class="showNewImage ? 'toggle-new-image new-image-open cancel-new-image' : 'toggle-new-image'" aria-label="New image"><font-awesome-icon :icon="['fas', 'plus']" /></button>
+            <button @click="showNewImage = !showNewImage" :class="showNewImage ? 'toggle-new-img new-image-open cancel-new-image' : 'toggle-new-img'" aria-label="New image"><font-awesome-icon :icon="['fas', 'plus']" /></button>
             <NewImage v-if="showNewImage" @refreshImages="getImages()"/>
         </div>
         <div v-if="imagePreview" class="image-preview form-field" role="region" aria-label="Selected image preview">
