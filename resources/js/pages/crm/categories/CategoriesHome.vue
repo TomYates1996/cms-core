@@ -28,6 +28,9 @@
                         <font-awesome-icon :icon="['fas', 'trash-can']" />
                         </button>
                     </li>
+                    <li class="no-items" v-if="useCategories.length < 1">
+                        <p>No Categories</p>
+                    </li>
                 </ul>
             </div>
         </section>

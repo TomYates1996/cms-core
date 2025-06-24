@@ -385,7 +385,7 @@ html {
                     .page-list tbody td:nth-of-type(4),
                     .page-list .table-head th:nth-of-type(3),
                     .page-list .table-head th:nth-of-type(4) {
-                        display: block;
+                        display: revert;
                     }
                     .new-crm-item {
                         .form-inner {
