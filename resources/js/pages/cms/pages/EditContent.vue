@@ -38,15 +38,15 @@
         <div v-if="widgetsCmsVisble" class="sidebar-option sidebar-widgets">
           <div class="widget-options">
             <div v-for="(widget, index) in localContent.widgets" :key="index" class="widget-option">
-                <p>{{ widget.label }}</p>
-                <button @click="editElement('widgets', index)" class="edit-btn"><font-awesome-icon :icon="['fas', 'pen-to-square']" /></button>
-                <div class="move-buttons">
+                <p v-if="!isBlog && index !== 0">{{ widget.label }}</p>
+                <button v-if="!isBlog && index !== 0" @click="editElement('widgets', index)" class="edit-btn"><font-awesome-icon :icon="['fas', 'pen-to-square']" /></button>
+                <div v-if="!isBlog && index !== 0" class="move-buttons">
                   <button @click="orderUp(index)" :disabled="index === 0" class="edit-btn"><font-awesome-icon :icon="['fas', 'angle-up']" /></button>
                   <button @click="orderDown(index)" :disabled="index === localContent.widgets.length - 1" class="edit-btn"><font-awesome-icon :icon="['fas', 'angle-down']" /></button>
                 </div>
-                <button @click="deleteElement('widgets', index)" class="delete-btn"><font-awesome-icon :icon="['fas', 'trash-can']" /></button>
-                <button @click="saveWidget(widget, 'widgets', index)" class="save-btn"><font-awesome-icon :icon="widget.is_saved ? ['fas', 'lock'] : ['fas', 'unlock']" /></button>
-                <button @click="cloneWidget(widget, 'widgets', index)" class="save-btn"><font-awesome-icon :icon="['fas', 'clone']" /></button>
+                <button v-if="!isBlog && index !== 0" @click="deleteElement('widgets', index)" class="delete-btn"><font-awesome-icon :icon="['fas', 'trash-can']" /></button>
+                <button v-if="!isBlog && index !== 0" @click="saveWidget(widget, 'widgets', index)" class="save-btn"><font-awesome-icon :icon="widget.is_saved ? ['fas', 'lock'] : ['fas', 'unlock']" /></button>
+                <button v-if="!isBlog && index !== 0" @click="cloneWidget(widget, 'widgets', index)" class="save-btn"><font-awesome-icon :icon="['fas', 'clone']" /></button>
             </div>
           </div>
           <button @click="openAddItem('widgets')" class="cms-btn-default">Add Widget</button>
