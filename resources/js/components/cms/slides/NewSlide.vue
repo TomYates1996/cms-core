@@ -18,6 +18,10 @@
                 <label>Link</label>
                 <div>
                     <label>
+                    <input type="radio" value="none" v-model="linkType" />
+                    None
+                    </label>
+                    <label>
                     <input type="radio" value="page" v-model="linkType" />
                     Internal page
                     </label>
@@ -38,7 +42,7 @@
                 </select>
             </div>
 
-            <div v-else class="link-option">
+            <div v-if="linkType === 'custom'" class="link-option">
                 <label for="custom-link">Custom URL</label>
                 <input id="custom-link" name="custom-link" type="text" required v-model="form.link" placeholder="https://example.com" aria-required="true" />
             </div>
@@ -89,7 +93,7 @@ import NewImage from './images/NewImage.vue';
         const form = useForm({
             'title' : '',
             'description' : '',
-            'link' : '',
+            'link' : null,
             'image_id': null,
         });
   
@@ -108,7 +112,7 @@ import NewImage from './images/NewImage.vue';
             imagePreview: null, 
             showImageGrid: false,
             showNewSlide: false,
-            linkType: 'page',
+            linkType: 'none',
         };
     },
     emits: ['refreshImages'],
@@ -136,6 +140,9 @@ import NewImage from './images/NewImage.vue';
             
         },
         createSlide () {
+            if (this.linkType === 'none') {
+                this.form.link = null;
+            }
             this.form.post(route('api.slides.store'), {
             onSuccess: () => {
                 this.$inertia.visit('/cms/slides');  

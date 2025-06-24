@@ -30,6 +30,10 @@
                 <!-- Toggle between page and custom -->
                 <div class="mb-2">
                 <label>
+                    <input type="radio" value="none" v-model="linkType" />
+                    No Link
+                </label>
+                <label>
                     <input type="radio" value="page" v-model="linkType" />
                     Select a page
                 </label>
@@ -50,7 +54,7 @@
                 </div>
 
                 <!-- Custom URL input -->
-                <div v-else>
+                <div v-if="linkType === 'custom'">
                 <input
                     type="text"
                     v-model="form.link"
@@ -113,7 +117,7 @@ export default {
         const form = useForm({
             title: '',
             description: '',
-            link: '',
+            link: null,
             image_id: null,
             image_alt: '',
             id: undefined,
@@ -125,7 +129,7 @@ export default {
         return {
             imagePreview: null, 
             showImageGrid: false, 
-            linkType: 'page',
+            linkType: 'none',
             editMode: false,
         };
     },
@@ -165,6 +169,9 @@ export default {
             this.updatePreview(this.form.image);
         },
         updateSlide() {
+            if (this.linkType === 'none') {
+                this.form.link = null;
+            }
             this.form.put(route('api.slides.update', this.form.id), {
                 onSuccess: () => {
                     this.$inertia.visit('/cms/slides');
