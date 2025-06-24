@@ -210,7 +210,7 @@ export default {
         display: flex;
     }
 
-     @media (min-width: 40rem) {
+     @media (min-width: 64rem) {
         .cms-options-toggle {
             display: none;
         }
