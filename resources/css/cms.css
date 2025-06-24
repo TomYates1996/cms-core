@@ -1492,6 +1492,13 @@ html.dark {
             }
         }
     }
+    #app {
+        .cms .new-layout-info .new-layout {
+            left: 300px;
+            width: unset;
+            right: 0px;
+        }
+    }
 }
 .dark .cms .main-content #newBlogPostModal .inline-flex {
             span {
