@@ -1,7 +1,7 @@
 <template>
     <footer>
         <div class="footer-top">
-            <img v-if="footer.logo" class="footer-logo" :src="'/' + footer.logo.image_path" :alt="footer.logo.image_alt">
+            <img v-if="footer.logo" class="footer-logo" :src="'/storage/' + footer.logo.image_path" :alt="footer.logo.image_alt">
             <ul>
                 <li v-for="page in footer.pages" :key="page.id">
                     <a :href="'/' + page.slug">{{ page.title }}</a>
