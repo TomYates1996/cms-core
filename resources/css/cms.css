@@ -1220,3 +1220,282 @@ html.dark {
         }
     }
 }
+
+
+@media screen and (min-width: 64em) {
+    .cms {
+        .page-left {
+            max-width: 1000px;
+            .crm-header-wrap {
+                .double-btn {
+                    position: static;
+                    width: unset;
+                    gap: 4px;
+                }
+            }
+        }
+        .main-content #newBlogPostModal .new-layout.cms-btn-default {
+            position: static;
+            max-width: 250px;
+            margin-top: 10px;
+            padding: 10px;
+            border-bottom: 1px solid var(--cms-black);
+        }
+        .main-content #newBlogPostModal .new-layout.cms-btn-default:last-of-type {
+            position: absolute;
+            z-index: 17;
+            top: 20px;
+            bottom: unset;
+            left: 20px;
+        }
+        .main-content #newBlogPostModal .image-grid .toggle-new-img.new-image-open {
+            z-index: 99;
+            left: 700px;
+            position: fixed;
+            height: 64px;
+            width: 250px;
+            background-color: var(--cms-tertiary);
+            top: 30px;
+            border: 1px solid var(--cms-black);
+            svg {
+                display: none;
+            }
+            &&::after {
+                content: 'Back';
+                color: var(--cms-white);
+                font-weight: 600;
+            }
+        }
+        .main-content #newBlogPostModal form.form.new-image {
+            left: 300px;
+            top: 0px;
+            height: 100%;
+        }
+        .main-content #newBlogPostModal .inline-flex:first-of-type {
+            flex-direction: row-reverse;
+            gap: 10px;
+            color: var(--cms-white);
+        }
+        .main-content #newBlogPostModal .inline-flex {
+            span {
+                margin-left: 0px;
+                color: var(--cms-black);
+            }
+        }
+    }
+    #app {
+        .layout.cms {
+            .main-content {
+                .image-grid {
+                    padding-top: 110px;
+                    z-index: 16;
+                    &&::before {
+                        content: '';
+                        background-color: var(--cms-background);
+                        width: 100%;
+                        height: 100px;
+                        position: fixed;
+                        top: 0px;
+                        left: 300px;
+                        right: 0px;
+                    }
+                }
+            }
+        }
+    }
+    #app {
+        .edit-content-page {
+            div.page-left.detail {
+                top: 0px;
+                left: 0px;
+                height: 100%;
+                background-color: var(--cms-primary);
+                width: 300px;
+                flex-direction: column;
+                align-items: center;
+                border-top: none;
+                border-right: 2px solid var(--cms-black);
+                .main-buttons {
+                    flex-direction: row;
+                    width: 100%;
+                    max-width: unset;
+                    font-size: 1rem;
+                    font-weight: 600;
+                    button {
+                        text-transform: capitalize;
+                    }
+                    border-right: none;
+                }
+                .expanding {
+                    width: 100%;
+                    padding: 20px;
+                    gap: 10px;
+                    button {
+                        padding: 6px;
+                        font-size: 1rem;
+                    }
+                    .active {
+                        background-color: var(--cms-secondary);
+                    }
+                    border-right: none;
+                }
+                .expanded-content {
+                    width: 100%;
+                    max-width: unset;
+                    padding: 10px 20px;
+                    .widget-option {
+                        p {
+                            font-size: 1rem;
+                            font-weight: 600;
+                        }
+                    }
+                }
+            }
+            .page-right {
+                position: fixed;
+                left: 300px;
+                right: 0px;
+                overflow: scroll;
+                top: 0px;
+                bottom: 0px;
+                padding: 0px;
+                width: unset !important;
+                .hamburger-nav {
+                    left: 300px;
+                    right: 0px;
+                    width: unset;
+                }
+                .edit-widget {
+                    border: none;
+                    .form-slide-image {
+                        .cancel-image-grid {
+                            left: 300px;
+                            right: 0px;
+                            width: unset;
+                            border-left: 0px;
+                        }
+                        .image-grid {
+                            grid-template-columns: repeat(5, 1fr);
+                            left: 300px;
+                            right: 0px;
+                            width: unset;
+                            .form.new-image {
+                                left: 300px;
+                            }
+                            .cancel-new-image {
+                                left: 300px;
+                                right: 0px;
+                                width: unset;
+                                border-left: none;
+                            }
+                        }
+                    }
+                }
+            }
+            .edit-widget,
+            .edit-footer-wrap,
+            .modal-content {
+                left: 300px;
+                right: 0px;
+                width: unset;
+                .tab-inners {
+                    .form-new-widget {
+                        .form-field {
+                            flex-direction: row;
+                        }
+                    }
+                }
+            }
+            .cancel-update-slide {
+                position: static;
+                max-width: 200px;
+                padding: 12px;
+                height: unset;
+            }
+            .footer-cta {
+                .cms-btn-default {
+                    max-width: 200px;
+                }
+                .edit-page-info .form-inner .cancel-cta {
+                    display: none;
+                }
+            }
+        }    
+        .layout.cms {
+            .main-content {
+                .page {
+                    .page-left {
+                        .crm-header-wrap {
+                            z-index: 100;
+                        }
+                        .image-grid {
+                            left: 300px;
+                            right: 0px;
+                            width: unset;
+                            top: 0px;
+                            padding-top: 0px
+                        }
+                    };
+                }
+            }
+        }   
+    }
+    .nav {
+        .nav-inner {
+            align-items: center;
+            .logo {
+                max-height: 100px;
+            }
+            .page-list {
+                margin: 0px auto;
+            }
+        }
+    }
+    #app .layout.cms {
+        .main-content {
+            .page-wrap {
+                .page-left {
+                    #newProductForm {
+                        flex-direction: row;
+                        display: grid;
+                        grid-template-columns: repeat(2, 1fr);
+                        gap: 20px;
+                        max-width: 700px;
+                        h2 {
+                            grid-column: 1 / span 2;
+                        }
+                        .form-field {
+                        }
+                        .cancel-product {
+                            left: 300px;
+                            right: 0px;
+                            width: unset;
+                            border-left: none;
+                        }
+                    }
+                    .new-crm-item {
+                        .form-inner {
+                            display: grid;
+                            grid-template-columns: repeat(2, 1fr);
+                            button.cms-btn-default:nth-of-type(1) {
+                                grid-column: 1;
+                            }
+                            button.cms-btn-default:last-of-type {
+                                left: 300px;
+                                right: 0px;
+                                border-left: none;
+                                width: unset;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.dark .cms .main-content #newBlogPostModal .inline-flex {
+            span {
+                margin-left: 0px;
+                color: var(--cms-white);
+            }
+        }
