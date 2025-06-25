@@ -4,9 +4,9 @@
             <NewCategory v-if="showNewCategory" @cancel-new="showNewCategory = false" id="newCategoryForm" />
             <NewSubcategory :forText="currentCategory.name" :parentId="currentCategory.id" v-if="showNewSubCategory" @subcategory-created="addNewSubcategory" id="newSubCategoryForm" />
             
-            <div v-if="!showNewCategory" class="category-list-wrap crm-list-wrap">
+            <div class="category-list-wrap crm-list-wrap">
                 <div class="crm-header-wrap">
-                    <h1 class="crm-header">{{ showSubCategories ? `Sub Categories - ${currentCategory.name}` : 'Categories' }}</h1>
+                    <h1 v-if="!showNewCategory && !showNewSubCategory" class="crm-header">{{ showSubCategories ? `Sub Categories - ${currentCategory.name}` : 'Categories' }}</h1>
                     <button v-if="!showSubCategories" class="new-layout" @click="showNewCategory = !showNewCategory" :aria-expanded="showNewCategory.toString()" aria-controls="newCategoryForm">
                         {{ showNewCategory ? 'Cancel' : 'New Category' }}
                     </button>
@@ -20,7 +20,7 @@
                     </div>
                 </div>
 
-                <ul class="category-list crm-list">
+                <ul v-if="!showNewCategory && !showNewSubCategory" class="category-list crm-list">
                     <li v-for="category in useCategories" :key="category.id" class="category-list-item crm-list-item">
                         <a :href="`/category/${category.slug}`">{{ category.name }}</a>
                         <button v-if="$page.props.auth.user && !showSubCategories" class="option" @click="toggleShowSubCategories(category.id)" :aria-label="`Show subcategories of: ${category.name}`" title="Show Subcategories">
