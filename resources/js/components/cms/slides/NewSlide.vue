@@ -1,5 +1,5 @@
 <template>
-  <form class="edit-page-info form" @submit.prevent="createSlide()" aria-label="Create a new slide">
+  <form class="edit-page-info form new-slide-form" @submit.prevent="createSlide()" aria-label="Create a new slide">
     <fieldset class="form-inner">
         <legend class="form-title">Create Slide</legend>
 
@@ -117,6 +117,7 @@ import NewImage from './images/NewImage.vue';
             showImageGrid: false,
             showNewSlide: false,
             linkType: 'none',
+            showNewImage: false,
         };
     },
     emits: ['refreshImages'],

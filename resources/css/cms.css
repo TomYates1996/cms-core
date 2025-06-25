@@ -1506,6 +1506,30 @@ html.dark {
         left: 320px;
         position: fixed;
     }
+    #app .new-slide-form {
+        overflow: hidden;
+        .cancel-new-image {
+            position: fixed;
+            bottom: 0px;
+            left: 0px;
+            width: 100%;
+            background-color: var(--cms-tertiary);
+            z-index: 99;
+            height: 64px;
+            font-weight: 600;
+        }
+        .image-grid {
+            background-color: var(--cms-background);
+            top: 50px;
+            bottom: 64px;
+            height: unset;
+            position: fixed;
+            .toggle-new-img {
+                color: var(--cms-black);
+                border: 1px solid var(--cms-black);
+            }
+        }
+    } 
 }
 .dark .cms {
     textarea {
