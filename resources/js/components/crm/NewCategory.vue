@@ -54,7 +54,7 @@ export default {
             });
         },
         cancelNew() {
-            this.$emit('cancelNew')
+            this.$emit('cancel-new')
         },
         updateSlug() {
             if (!this.manualSlugChange) {

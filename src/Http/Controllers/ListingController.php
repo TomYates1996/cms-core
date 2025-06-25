@@ -43,7 +43,7 @@ class ListingController extends Controller
             'email' => 'nullable|email',
             'website' => 'nullable|url',
             'media_gallery' => 'nullable|array',
-            'media_gallery.*' => 'image|max:2048',
+            'media_gallery.*' => 'image|max:10240',
             'thumbnail_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
             'opening_hours' => 'nullable|array',
             'prices' => 'nullable|array',

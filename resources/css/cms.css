@@ -1500,9 +1500,14 @@ html.dark {
         }
     }
 }
-.dark .cms .main-content #newBlogPostModal .inline-flex {
+.dark .cms {
+    textarea {
+        color: var(--cms-black);
+    }
+    .main-content #newBlogPostModal .inline-flex {
             span {
                 margin-left: 0px;
                 color: var(--cms-white);
             }
         }
+}

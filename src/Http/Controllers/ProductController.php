@@ -40,7 +40,7 @@ class ProductController extends Controller
             'variants.*.short_description' => 'nullable|string|max:300',
             'variants.*.thumbnail_image' => 'nullable|image|max:10240',
             'variants.*.media_gallery' => 'nullable|array',
-            'variants.*.media_gallery.*' => 'image|max:2048',
+            'variants.*.media_gallery.*' => 'image|max:10240',
             'variants.*.items' => 'required|array|min:1',
             'variants.*.items.*.label' => 'required|string|max:255',
             'variants.*.items.*.sku' => 'required|string|distinct',

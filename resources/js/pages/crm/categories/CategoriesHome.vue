@@ -1,7 +1,7 @@
 <template>
     <div class="page-wrap crm-page">
         <section class="page-left">
-            <NewCategory v-if="showNewCategory" id="newCategoryForm" />
+            <NewCategory v-if="showNewCategory" @cancel-new="showNewCategory = false" id="newCategoryForm" />
             <NewSubcategory :forText="currentCategory.name" :parentId="currentCategory.id" v-if="showNewSubCategory" @subcategory-created="addNewSubcategory" id="newSubCategoryForm" />
             
             <div v-if="!showNewCategory" class="category-list-wrap crm-list-wrap">
@@ -10,12 +10,14 @@
                     <button v-if="!showSubCategories" class="new-layout" @click="showNewCategory = !showNewCategory" :aria-expanded="showNewCategory.toString()" aria-controls="newCategoryForm">
                         {{ showNewCategory ? 'Cancel' : 'New Category' }}
                     </button>
-                    <button v-if="showSubCategories" class="new-layout" @click="showNewSubCategory = !showNewSubCategory" :aria-expanded="showNewSubCategory.toString()" aria-controls="newSubCategoryForm">
-                        {{ showNewSubCategory ? 'Cancel' : 'New Sub Category' }}
-                    </button>
-                    <button v-if="showSubCategories" class="new-layout" @click="closeSubcatList()" aria-label="Back to Categories">
-                        Back
-                    </button>
+                    <div v-if="showSubCategories" class="new-sub-cat-wrap double-btn">
+                        <button  class="new-layout" @click="showNewSubCategory = !showNewSubCategory" :aria-expanded="showNewSubCategory.toString()" aria-controls="newSubCategoryForm">
+                            {{ showNewSubCategory ? 'Cancel' : 'New Sub Category' }}
+                        </button>
+                        <button class="new-layout" @click="closeSubcatList()" aria-label="Back to Categories">
+                            Back
+                        </button>
+                    </div>
                 </div>
 
                 <ul class="category-list crm-list">
