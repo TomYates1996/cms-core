@@ -1499,6 +1499,13 @@ html.dark {
             right: 0px;
         }
     }
+    #app .cms #newBlogPostModal div.image-grid {
+        height: unset;
+    }
+    #app .cms .main-content #newBlogPostModal .new-layout.cms-btn-default:last-of-type {
+        left: 320px;
+        position: fixed;
+    }
 }
 .dark .cms {
     textarea {
