@@ -56,11 +56,15 @@
         </div>
 
         <div v-if="showImageGrid" id="image-grid" class="image-grid" role="region" aria-label="Image selection">
-        <img v-for="image in images" :key="image.id" class="new-slide-img-option"
+            <span id="image-grid-label" class="sr-only">Select an image</span>
+            <img v-for="image in images" :key="image.id" class="new-slide-img-option"
             @click="addImageToSlide(image)" :src="'/storage/' + image.image_path"
             :alt="image.image_alt || 'Slide image option'" role="button" tabindex="0" />
-        <NewImage @refreshImages="refreshImages()" />
+            <button @click="showNewImage = !showNewImage" :class="showNewImage ? 'toggle-new-img new-image-open cancel-new-image' : 'toggle-new-img'" aria-label="New image"><font-awesome-icon :icon="['fas', 'plus']" /></button>
+            <NewImage v-if="showNewImage" @refreshImages="getImages" />
+            <button class="cancel-new-image new-layout" v-if="showNewImage" @click="showNewImage = false">Cancel New Image</button>
         </div>
+        <button class="cancel-new-image cancel-image-grid new-layout" v-if="showImageGrid && !showNewImage" @click="showImageGrid = false">Back</button>
 
         <div v-if="imagePreview" class="image-preview form-field" role="region" aria-label="Selected image preview">
         <p class="sr-only">Preview Image</p>
