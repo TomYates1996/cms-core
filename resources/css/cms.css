@@ -1542,3 +1542,19 @@ html.dark {
             }
         }
 }
+
+.btn-read-more {
+    background-color: var(--secondary-colour);
+    color: var(--site-primary);
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-weight: 600;
+    border: 1px solid var(--site-primary);
+    transition: all 0.25s ease;
+}
+
+.btn-read-more:hover {
+    color: var(--white);
+    background-color: var(--tertiary-colour);
+    border-color: var(--tertiary-colour);
+}

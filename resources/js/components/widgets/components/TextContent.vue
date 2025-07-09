@@ -8,7 +8,7 @@
         </h3>
         <p v-if="slide.price_range">{{ slide.price_range }}</p>
         <p class="slide-desc">{{ slide.description.length > 100 ? slide.description.slice(0, 100) + '...' : slide.description }}</p>
-        <a v-if="slide.link && widget.slide_link_text" :href="slide.link" class="cms-btn-alt btn-read-more">    
+        <a v-if="slide.link && widget.slide_link_text" :href="slide.link" class="btn-read-more">    
             {{ widget.slide_link_text }}
         </a>
     </div>
