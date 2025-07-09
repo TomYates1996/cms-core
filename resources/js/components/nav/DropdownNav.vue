@@ -4,27 +4,62 @@
     <span :class="toggled ? 'toggle-yes toggle' : 'toggle-no toggle'"></span>
     <span :class="toggled ? 'toggle-yes toggle' : 'toggle-no toggle'"></span>
   </button>
-  <nav class="hamburger-nav" v-if="toggled">
-    <div class="hamburger-inner">
-        <ul class="col-1">
-            <li v-for="page in pages" :key="page.id">
-                <a :href="'/' + page.slug">{{ page.title }}</a>
-                <button class="more-btn" @click="showChildDropdown(page)" v-if="page.children"><font-awesome-icon :icon="['fas', 'plus']" /></button>
-            </li>
-        </ul>
-        <ul v-if="openChild" class="col-2 dropdown level-2">
-            <li v-for="child in openDropdown" :key="child.id">
+    <nav class="hamburger-nav" v-if="toggled">
+    <div v-if="isMobile" class="hamburger-inner mobile">
+        <ul class="mobile-nav">
+        <li v-for="page in pages" :key="page.id">
+            <div class="nav-item">
+            <a :href="'/' + page.slug">{{ page.title }}</a>
+            <button v-if="page.children" class="more-btn" @click="toggleChild(page)">
+                <font-awesome-icon :icon="['fas', openChild === page.id ? 'minus' : 'plus']" />
+            </button>
+            </div>
+
+            <ul v-if="openChild === page.id" class="child-nav">
+            <li v-for="child in page.children" :key="child.id">
+                <div class="nav-item">
                 <a :href="'/' + child.slug">{{ child.title }}</a>
-                <button class="more-btn" @click="showGrandchildDropdown(child)" v-if="child.children"><font-awesome-icon :icon="['fas', 'plus']" /></button>
+                <button v-if="child.children" class="more-btn" @click="toggleGrandchild(child)">
+                    <font-awesome-icon :icon="['fas', openGrandchild === child.id ? 'minus' : 'plus']" />
+                </button>
+                </div>
+
+                <ul v-if="openGrandchild === child.id" class="grandchild-nav">
+                <li v-for="grandchild in child.children" :key="grandchild.id">
+                    <a :href="'/' + grandchild.slug">{{ grandchild.title }}</a>
+                </li>
+                </ul>
             </li>
-        </ul>
-        <ul v-if="openGrandchild" class="col-3 dropdown level-3">
-            <li v-for="grandchild in openCol3Dropdown" :key="grandchild.id">
-                <a :href="grandchild.slug">{{ grandchild.title }}</a>
-            </li>
+            </ul>
+        </li>
         </ul>
     </div>
-  </nav>
+
+    <div v-else class="hamburger-inner desktop">
+        <ul class="col-1">
+        <li v-for="page in pages" :key="page.id">
+            <a :href="'/' + page.slug">{{ page.title }}</a>
+            <button v-if="page.children" class="more-btn" @click="showChildDropdown(page)">
+            <font-awesome-icon :icon="['fas', 'plus']" />
+            </button>
+        </li>
+        </ul>
+        <ul v-if="openChild" class="col-2 dropdown level-2">
+        <li v-for="child in openDropdown" :key="child.id">
+            <a :href="'/' + child.slug">{{ child.title }}</a>
+            <button v-if="child.children" class="more-btn" @click="showGrandchildDropdown(child)">
+            <font-awesome-icon :icon="['fas', 'plus']" />
+            </button>
+        </li>
+        </ul>
+        <ul v-if="openGrandchild" class="col-3 dropdown level-3">
+        <li v-for="grandchild in openCol3Dropdown" :key="grandchild.id">
+            <a :href="grandchild.slug">{{ grandchild.title }}</a>
+        </li>
+        </ul>
+    </div>
+    </nav>
+
 </template>
 
 <script>
@@ -39,13 +74,31 @@ export default {
             openDropdown: null,
             openGrandchild: false,
             openCol3Dropdown: null,
+            isMobile: false,
         }
     },
     created() {
     },
+    mounted() {
+        this.checkViewport();
+        window.addEventListener('resize', this.checkViewport);
+    },
+        beforeDestroy() {
+        window.removeEventListener('resize', this.checkViewport);
+    },
     methods: {
         toggle() {
-           this.toggled = !this.toggled;
+            this.toggled = !this.toggled;
+        },
+        checkViewport() {
+            this.isMobile = window.innerWidth <= 640; 
+        },
+        toggleChild(page) {
+            this.openChild = this.openChild === page.id ? null : page.id;
+            this.openGrandchild = null;
+        },
+        toggleGrandchild(child) {
+            this.openGrandchild = this.openGrandchild === child.id ? null : child.id;
         },
         showChildDropdown(page) {
             if (this.openDropdown === page.children) {
@@ -54,20 +107,21 @@ export default {
                 this.openCol3Dropdown = null;
                 this.openGrandchild = false;
             } else {
-                this.openGrandchild = false;
                 this.openDropdown = page.children;
                 this.openChild = true;
+                this.openGrandchild = false;
             }
         },
-        showGrandchildDropdown(page) {
-            if (this.openCol3Dropdown === page.children) {
+        showGrandchildDropdown(child) {
+            if (this.openCol3Dropdown === child.children) {
                 this.openCol3Dropdown = null;
                 this.openGrandchild = false;
             } else {
-                this.openCol3Dropdown = page.children;
+                this.openCol3Dropdown = child.children;
                 this.openGrandchild = true;
             }
         },
+        
     },
 }
 </script>
@@ -108,9 +162,10 @@ export default {
         top: 0px;
         left: 0px;
         width: 100%;
-        height: 100vw;
+        max-height: 100vh;
         background-color: var(--primary-colour);
         z-index: 101;
+        overflow: scroll;
         .hamburger-inner {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -119,6 +174,9 @@ export default {
             gap: 10px;
             max-width: var(--width-max);
             margin: 0px auto;
+            min-height: 100vh;
+            background-color: var(--primary-colour);
+            height: 100%;
             ul li {
                 display: flex;
                 width: 100%;

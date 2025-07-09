@@ -137,6 +137,9 @@ html {
             width: 100%;
             align-items: center;
             justify-content: center;
+            position: sticky;
+            top: 0px;
+            z-index: 9999;
         }
         .login-page {
             h1 {
@@ -492,7 +495,7 @@ html {
     max-width: 100px;
     display: flex;
     img {
-        object-fit: cover;
+        object-fit: contain;
         width: 100%;
     }
 }
