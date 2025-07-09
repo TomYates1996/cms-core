@@ -56,7 +56,7 @@ export default {
     margin: 0px auto var(--widget-bottom);
     width: 100%;
     .content {
-        margin: 0px 20px;
+        margin: 0px 0px;
     }
 }
 .core-widget.slider_2_across_full,
