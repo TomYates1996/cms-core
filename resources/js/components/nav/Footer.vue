@@ -90,14 +90,12 @@ footer {
                 margin-top: 14px;
             }
         }
-        @media screen and (max-width: 64em) {
+        @media screen and (min-width: 40em) {
             display: grid;
+            grid-template-columns: repeat(3, 1fr);
+        }
+        @media screen and (min-width: 64em) {
             grid-template-columns: repeat(4, 1fr);
-            .right-upper {
-                .social-links {
-
-                }
-            }
         }
     }
     .footer-attributions {

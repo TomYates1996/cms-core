@@ -158,11 +158,16 @@ export default {
         transform: rotate(-45deg) translate(4px, -4px);
     }
     .hamburger-nav {
-        position: fixed;
-        top: 0px;
-        left: 0px;
+        position: absolute;
+        top: 100%;
+        border-radius: 0px 0px 10px 10px;
+        @media screen and (min-width 40em) {
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            max-height: 100vh;
+        }
         width: 100%;
-        max-height: 100vh;
         background-color: var(--primary-colour);
         z-index: 101;
         overflow: scroll;
@@ -208,11 +213,8 @@ export default {
             }
         }
     }
-    .hamburger-nav.mobile {
-        position: absolute;
-        top: 100%;
-        border-radius: 0px 0px 10px 10px;
-        .hamburger-inner {
+    .hamburger-nav {
+        .hamburger-inner.mobile {
             display: flex;
             flex-direction: column;
             padding: 0px 20px 20px 20px;
