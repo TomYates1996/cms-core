@@ -63,14 +63,18 @@ footer {
     margin-top: auto;
     background-color: var(--secondary-colour);
     .footer-top {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
         justify-content: space-between;
         align-items: start;
         padding: 20px;
         max-width: var(--width-max);
         margin: 0px auto;
         width: 100%;
+        ul li a {
+            font-weight: 600;
+        }
         .footer-logo {
             max-width: 200px;
             height: auto;
@@ -82,6 +86,17 @@ footer {
                 display: flex;
                 gap: 8px;
                 grid-column: 4;
+                font-size: 20px;
+                margin-top: 14px;
+            }
+        }
+        @media screen and (max-width: 64em) {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            .right-upper {
+                .social-links {
+
+                }
             }
         }
     }
@@ -95,6 +110,10 @@ footer {
             padding: 10px 20px;
             max-width: var(--width-max);
             margin: 0px auto;
+            font-size: 13px;
+            p:last-of-type {
+                text-align: end;
+            }
         }
     }
 }

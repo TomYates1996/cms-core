@@ -8,20 +8,20 @@
     <div v-if="isMobile" class="hamburger-inner mobile">
         <ul class="mobile-nav">
         <li v-for="page in pages" :key="page.id">
-            <div class="nav-item">
-            <a :href="'/' + page.slug">{{ page.title }}</a>
-            <button v-if="page.children" class="more-btn" @click="toggleChild(page)">
-                <font-awesome-icon :icon="['fas', openChild === page.id ? 'minus' : 'plus']" />
-            </button>
+            <div :class="openChild === page.id ? 'nav-item open' : 'nav-item' ">
+                <a :href="'/' + page.slug">{{ page.title }}</a>
+                <button v-if="page.children" class="more-btn" @click="toggleChild(page)">
+                    <font-awesome-icon :icon="['fas', openChild === page.id ? 'minus' : 'plus']" />
+                </button>
             </div>
 
             <ul v-if="openChild === page.id" class="child-nav">
             <li v-for="child in page.children" :key="child.id">
                 <div class="nav-item">
-                <a :href="'/' + child.slug">{{ child.title }}</a>
-                <button v-if="child.children" class="more-btn" @click="toggleGrandchild(child)">
-                    <font-awesome-icon :icon="['fas', openGrandchild === child.id ? 'minus' : 'plus']" />
-                </button>
+                    <a :href="'/' + child.slug">{{ child.title }}</a>
+                    <button v-if="child.children" class="more-btn" @click="toggleGrandchild(child)">
+                        <font-awesome-icon :icon="['fas', openGrandchild === child.id ? 'minus' : 'plus']" />
+                    </button>
                 </div>
 
                 <ul v-if="openGrandchild === child.id" class="grandchild-nav">
@@ -205,6 +205,48 @@ export default {
             }
             li:last-of-type {
                 border-bottom: 1px solid var(--white);
+            }
+        }
+    }
+    .hamburger-nav.mobile {
+        position: absolute;
+        top: 100%;
+        border-radius: 0px 0px 10px 10px;
+        .hamburger-inner {
+            display: flex;
+            flex-direction: column;
+            padding: 0px 20px 20px 20px;
+            min-height: unset;
+            ul.mobile-nav {
+                li {
+                    flex-direction: column;
+                    .nav-item {
+                        width: 100%;
+                        display: flex;
+                        font-weight: 600;
+                    }
+                    .nav-item.open {
+                        background-color: var(--tertiary-colour);
+                        color: var(--white);
+                    }
+                    .child-nav {
+                        li {
+                            .nav-item {
+                                font-weight: 500;
+                                padding-left: 14px;
+                                background-color: var(--secondary-colour);
+                                color: var(--black);
+                            }
+                            .child-nav {
+                                li {
+                                    .nav-item {
+                                        padding-left: 14px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
     }
