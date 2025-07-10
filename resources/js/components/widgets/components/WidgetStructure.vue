@@ -130,7 +130,7 @@ export default {
             align-items: center;
             gap: 20px;
             .text-section {
-                flex-basis: 40%;
+                flex-basis: 50%;
                 background-color: var(--primary-colour);
                 color: var(--text-primary);
                 padding: 40px;

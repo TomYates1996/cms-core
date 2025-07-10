@@ -1573,3 +1573,12 @@ html.dark {
     display: flex;
     flex-direction: column;
 }
+
+.core-widget.side_by_side .content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    .item:nth-of-type(odd) {
+        flex-direction: row-reverse;
+    }
+}
