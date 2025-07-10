@@ -62,7 +62,6 @@ export default {
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
     padding: 20px;
-    max-width: var(--width-max);
     margin: 0px auto;
     width: 100%;
 }

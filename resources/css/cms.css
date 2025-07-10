@@ -1449,8 +1449,7 @@ html.dark {
     .nav {
         .nav-inner {
             align-items: center;
-            max-width: var(--width-max);
-            padding: 0px 20px;
+            max-width: calc(var(--width-max) - 40px);
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             .logo {
