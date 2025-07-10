@@ -34,7 +34,7 @@ const submit = () => {
         <div v-if="status" class="mb-4 text-center text-sm font-medium text-green-600">
             {{ status }}
         </div>
-
+        <p>(email: test@test.com password: testtest)</p>
         <form @submit.prevent="submit" class="flex flex-col gap-6">
             <div class="grid gap-6">
                 <div class="grid gap-2">

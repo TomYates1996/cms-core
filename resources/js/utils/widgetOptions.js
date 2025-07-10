@@ -8,8 +8,8 @@ export const widgetOptions = [
     { id: 6, name: 'cards_wide', variant: 'cards_wide_2', description: '2 cards with larger widths than regular cards 2 across', label: 'Cards Wide 2' , path: 'cardswide/Cards2Across', hasHeader: true, hasSettings: true, showWidget: true},
     { id: 7, name: 'cards_wide', variant: 'cards_wide_3', description: '2 cards with larger widths than regular cards 3 across', label: 'Cards Wide 3' , path: 'cardswide/Cards3Across', hasHeader: true, hasSettings: true, showWidget: true },
     { id: 8, name: 'mosaic', variant: 'mosaic_4', description: 'A larger image on the left then 3 smaller images stacked on the right', label: 'Moasic 4' , path: 'mosaic/Mosaic4', hasHeader: true, hasSettings: true, showWidget: true},
-    { id: 9, name: 'hero', variant: 'hero_image', description: 'A big image banner for the top of the page', label: 'Hero Image' , path: 'hero/HeroImage' , hasHeader: false},
-    { id: 10, name: 'hero', variant: 'hero_image_alt', description: 'A big image banner for the top of the page', label: 'Hero Image Alt' , path: 'hero/HeroImageAlt' , hasHeader: false},
+    { id: 9, name: 'hero', variant: 'hero_image', description: 'A big image banner for the top of the page', label: 'Hero Image' , path: 'hero/HeroImage' , hasHeader: false, showWidget: true},
+    { id: 10, name: 'hero', variant: 'hero_image_alt', description: 'A big image banner for the top of the page', label: 'Hero Image Alt' , path: 'hero/HeroImageAlt' , hasHeader: false, showWidget: true},
     { id: 11, name: 'slider', variant: 'slider_2_across', description: 'A carousel of images, 2 shown at a time', label: 'Slider 2 Across' , path: 'slider/Slider2Across' , hasHeader: true, hasSettings: true, showWidget: true},
     { id: 12, name: 'slider', variant: 'slider_2_across_full', description: 'A full width carousel of images, 2 shown at a time', label: 'Slider 2 Across (Full Width)' , path: 'slider/Slider2AcrossFull' , hasHeader: true, hasSettings: true, showWidget: true},
     { id: 13, name: 'slider', variant: 'slider_3_across', description: 'A carousel of images, 3 shown at a time', label: 'Slider 3 Across' , path: 'slider/Slider3Across' , hasHeader: true, hasSettings: true, showWidget: true},
@@ -22,4 +22,4 @@ export const widgetOptions = [
     { id: 20, name: 'listings', variant: 'listings_grid', description: 'Display Listings as a grid', label: 'Listings Grid' , path: 'products/Grid' , hasHeader: true, hasSettings: false, showWidget: true},
     { id: 21, name: 'events', variant: 'events_grid', description: 'Display Events as a grid', label: 'Events Grid' , path: 'products/Grid' , hasHeader: true, hasSettings: false, showWidget: true},
     { id: 22, name: 'products', variant: 'products_grid', description: 'Display Products as a grid', label: 'Products Grid' , path: 'products/Grid' , hasHeader: true, hasSettings: false, showWidget: true},
-];
+]; 
