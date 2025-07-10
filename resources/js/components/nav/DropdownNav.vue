@@ -161,11 +161,12 @@ export default {
         position: absolute;
         top: 100%;
         border-radius: 0px 0px 10px 10px;
-        @media screen and (min-width 40em) {
+        left: 0px;
+        @media screen and (min-width: 40em) {
             position: fixed;
             top: 0px;
-            left: 0px;
             max-height: 100vh;
+            left: 0px;
         }
         width: 100%;
         background-color: var(--primary-colour);

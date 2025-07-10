@@ -490,6 +490,9 @@ html {
 .nav .widgets {
     grid-column: 2;
     margin-left: auto;
+    @media screen (min-width: 64em) {
+        grid-column: 3;
+    }
 }
 .nav .logo {
     max-width: 100px;
@@ -1446,6 +1449,10 @@ html.dark {
     .nav {
         .nav-inner {
             align-items: center;
+            max-width: var(--width-max);
+            padding: 0px 20px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
             .logo {
                 max-height: 100px;
             }
@@ -1560,4 +1567,10 @@ html.dark {
     color: var(--white);
     background-color: var(--tertiary-colour);
     border-color: var(--tertiary-colour);
+}
+
+.front-page-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
