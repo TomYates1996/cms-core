@@ -1578,7 +1578,7 @@ html.dark {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    .item:nth-of-type(odd) {
+    .item:nth-of-type(2n) {
         flex-direction: row-reverse;
     }
 }
