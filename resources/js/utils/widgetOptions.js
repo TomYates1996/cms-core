@@ -22,4 +22,5 @@ export const widgetOptions = [
     { id: 20, name: 'listings', variant: 'listings_grid', description: 'Display Listings as a grid', label: 'Listings Grid' , path: 'products/Grid' , hasHeader: true, hasSettings: false, showWidget: true},
     { id: 21, name: 'events', variant: 'events_grid', description: 'Display Events as a grid', label: 'Events Grid' , path: 'products/Grid' , hasHeader: true, hasSettings: false, showWidget: true},
     { id: 22, name: 'products', variant: 'products_grid', description: 'Display Products as a grid', label: 'Products Grid' , path: 'products/Grid' , hasHeader: true, hasSettings: false, showWidget: true},
+    { id: 23, name: 'showcase', variant: 'showcase', description: 'Display slides as showcase items', label: 'Showcase' , path: 'showcase/Showcase' , hasHeader: true, hasSettings: true, showWidget: true},
 ]; 
