@@ -3,7 +3,7 @@
     <Head :title="page.title">
     </Head>
 
-    <div class="front-page-wrapper" :class="pageClass()">
+    <div class="front-page-wrapper" :class="pageClass">
         <HamburgerHeader :header="header" :allPages="pages" :pages="header.pages" :link="header.link" :logo="header.logo"/>
     
         <component v-for="widget in widgets" :key="widget.id" 
