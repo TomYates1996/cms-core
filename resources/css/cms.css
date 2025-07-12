@@ -1639,15 +1639,17 @@ html.dark {
                         background-image: url(/storage/app/public/svgs/laptop-bg.png);
                         height: 201px;
                         width: 320px;
-                        @media screen and (min-width: 64em) {
-                            height: 313px;
-                            width: 500px;
-                        }
                         left: 0px;
                         right: 0px;
                         background-size: contain;
                         background-position: center;
                         background-repeat: no-repeat;
+                    }
+                    @media screen and (min-width: 64em) {
+                        &::before {
+                            height: 313px;
+                            width: 500px;
+                        }
                     }
                     .responsive-picture {
                         position: relative;
@@ -1659,7 +1661,7 @@ html.dark {
                             @media screen and (min-width: 64em) {
                                 max-width: 369px;
                                 left: 50px;
-                                top: 15px;
+                                top: 37px;
                             }
                         }
                     }
