@@ -7,7 +7,7 @@
     </div>
     <div class="item mobile" v-if="widget.slides.length > 1">
         <div class="image-section">
-            <ResponsiveImage :slide="widget.slides[1]" :aspectRatios="aspectRatios"/>
+            <ResponsiveImage :slide="widget.slides[1]" :aspectRatios="mosaicRatios"/>
         </div>
         <TextContent :slide="widget.slides[1]" :widget="widget"/>
     </div>
@@ -25,6 +25,7 @@ export default {
     props: {
         widget: Object,
         aspectRatios: Array,
+        mosaicRatios: Array,
     },
 
 }
