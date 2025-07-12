@@ -1582,3 +1582,129 @@ html.dark {
         flex-direction: row-reverse;
     }
 }
+
+/* Showcase widget */
+
+#app .core-widget.showcase {
+    width: 100%;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    @media screen and (min-width: 40em) {
+        flex-direction: row;
+        padding: 20px 0px;
+    }
+    @media screen and (min-width: 64em) {
+        padding: 40px 0px 20px;
+    }
+    .widget-header {
+        margin: 0px;
+        align-items: center;
+        @media screen and (min-width: 64em) {
+            h1.widget-title {
+                font-size: 4rem;
+            }
+        }
+    }
+    .content {
+        gap: 20px;
+        display: flex;
+        width: fit-content;
+        position: relative;
+        height: 205px;
+        @media screen and (min-width: 64em) {
+            height: 306px;
+        }
+        .item {
+            width: 100%;
+            position: relative;
+            @media screen and (min-width: 40em) {
+                width: 330px;
+            }
+            @media screen and (min-width: 64em) {
+                width: 500px;
+            }
+            .text-section {
+                display: none;
+            }
+            .image-section {
+                .image-wrapper {
+                    position: relative;
+                    overflow: visible;
+                    padding-bottom: 16px;
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        background-image: url(/storage/app/public/svgs/laptop-bg.png);
+                        height: 201px;
+                        width: 320px;
+                        @media screen and (min-width: 64em) {
+                            height: 313px;
+                            width: 500px;
+                        }
+                        left: 0px;
+                        right: 0px;
+                        background-size: contain;
+                        background-position: center;
+                        background-repeat: no-repeat;
+                    }
+                    .responsive-picture {
+                        position: relative;
+                        img {
+                            position: absolute;
+                            left: 32px;
+                            max-width: 236px;
+                            top: 10px;
+                            @media screen and (min-width: 64em) {
+                                max-width: 369px;
+                                left: 50px;
+                                top: 15px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .item:nth-of-type(2) {
+            width: 0%;
+            min-height: 0px;
+            position: absolute;
+            bottom: 110px;
+            .image-section {
+                .image-wrapper {
+                    position: relative;
+                    overflow: visible;
+                    padding-bottom: 0px;
+                    &::before {
+                        background-image: url(/storage/app/public/svgs/phone-bg.png);
+                        height: 100px;
+                        width: 120px;
+                        @media screen and (min-width: 64em) {
+                            height: 140px;
+                            bottom: -100px;
+                        }
+                    }
+                    .responsive-picture {
+                        img {
+                            top: 12px;
+                            aspect-ratio: 126/20;
+                            height: 84px;
+                            object-fit: cover;
+                            width: 44px;
+                            border-radius: 0px 0px 4px 4px;
+                            left: 39px;
+                            @media screen and (min-width: 64em) {
+                                height: 120px;
+                                top: -25px;
+                                width: 60px;
+                                left: 31px;
+                                border-radius: 0px 0px 8px 8px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
