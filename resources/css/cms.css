@@ -1647,7 +1647,7 @@ html.dark {
                     }
                     @media screen and (min-width: 64em) {
                         &::before {
-                            height: 313px;
+                            height: 355px;
                             width: 500px;
                         }
                     }
@@ -1661,7 +1661,7 @@ html.dark {
                             @media screen and (min-width: 64em) {
                                 max-width: 369px;
                                 left: 50px;
-                                top: 37px;
+                                top: 15px;
                             }
                         }
                     }
@@ -1682,7 +1682,9 @@ html.dark {
                         background-image: url(/storage/app/public/svgs/phone-bg.png);
                         height: 100px;
                         width: 120px;
-                        @media screen and (min-width: 64em) {
+                    }
+                    @media screen and (min-width: 64em) {
+                        &::before {
                             height: 140px;
                             bottom: -100px;
                         }
