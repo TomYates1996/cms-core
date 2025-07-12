@@ -3,7 +3,7 @@
     <Head :title="page.title">
     </Head>
 
-    <div class="front-page-wrapper">
+    <div class="front-page-wrapper" :class="pageClass()">
         <HamburgerHeader :header="header" :allPages="pages" :pages="header.pages" :link="header.link" :logo="header.logo"/>
     
         <component v-for="widget in widgets" :key="widget.id" 
@@ -46,6 +46,11 @@ export default {
         }
     },
     mounted() {
+    },
+    computed: {
+        pageClass() {
+            return this.page?.title?.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9\-]/g, '') || ''
+        }
     },
     methods: {
         // Get the list of pages
