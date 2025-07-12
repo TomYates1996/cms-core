@@ -1,5 +1,5 @@
 <template>
-    <WidgetStructure :widget="widget" :aspectRatios="aspectRatios"/>
+    <WidgetStructure :widget="widget" :aspectRatios="aspectRatios" :mosaicRatios="mosaicRatios"/>
 </template>
 
 <script>
@@ -17,7 +17,10 @@ export default {
         return {
             // Add image aspect ratios 
             aspectRatios: [
-                { width: 600, height: 360, at: 640 },
+                { width: 369, height: 228, at: 640 },
+            ],
+            mosaicRatios: [
+                { width: 94, height: 192, at: 640 },
             ],
         }
     },

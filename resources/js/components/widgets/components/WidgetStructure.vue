@@ -1,10 +1,13 @@
 <template>
     <div :class="'core-widget ' + widget.type + ' ' + widget.variant">
         <WidgetHeader v-if="widget.title || widget.subtitle || widget.description" :widget="widget"/>
-        <div v-if="widget.type !== 'mosaic'" class="content">
+        <div v-if="widget.type !== 'mosaic' && widget.type !== 'showcase'" class="content">
             <SlideContent :widget="widget" :aspectRatios="aspectRatios" />
         </div>
-        <div v-else class="content">
+        <div v-if="widget.type === 'showcase'" class="content">
+            <ShowcaseSlideContent :widget="widget" :aspectRatios="aspectRatios" :mosaicRatios="mosaicRatios" />
+        </div>
+        <div v-if="widget.type === 'mosaic'" class="content">
             <MosaicContent :widget="widget" :aspectRatios="aspectRatios" :mosaicRatios="mosaicRatios" :imageHovers="imageHovers"/>
         </div>
     </div>
@@ -12,6 +15,7 @@
 
 <script>
 import MosaicContent from './MosaicContent.vue';
+import ShowcaseSlideContent from './ShowcaseSlideContent.vue';
 import SlideContent from './SlideContent.vue';
 import WidgetHeader from './WidgetHeader.vue';
 
@@ -20,6 +24,7 @@ export default {
         WidgetHeader,
         SlideContent,
         MosaicContent,
+        ShowcaseSlideContent,
     },
     props: {
         widget: Object,
